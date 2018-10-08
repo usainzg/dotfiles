@@ -3,9 +3,11 @@ let localmapleader="-"
 
 set nocompatible
 
-filetype indent plugin on
-syntax enable "Sintaxis ON
+filetype off
 
+syntax on "Sintaxis ON
+
+filetype indent plugin on
 "VimPlug {{{
 call plug#begin('~/.vim/plugged')
 
@@ -23,8 +25,6 @@ Plug 'bling/vim-airline'
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'scrooloose/nerdtree'
-
 Plug 'scrooloose/syntastic'
 
 Plug 'sirver/ultisnips'
@@ -34,6 +34,8 @@ Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'vim-scripts/Ada-Bundle', {'for': 'ada'}
 
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 call plug#end()
 "}}}
@@ -166,10 +168,6 @@ endif
 
 "Plugin Config {{{
 
-"NERDTree {{{
-noremap <leader>t <esc>:NERDTreeToggle<CR>
-"}}}
-
 "Vim-Airline {{{
 let g:airline_theme='qwq'
 set laststatus=2
@@ -213,4 +211,4 @@ let g:rustfmt_autosave = 1
 let g:syntastic_rust_checkers = ['rustc']
 " }}}
 
-"}}
+"}}u
