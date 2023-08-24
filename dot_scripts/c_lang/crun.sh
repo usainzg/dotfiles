@@ -4,5 +4,5 @@
 filename=$1
 
 # Print the file name
-echo $filename
-
+echo "Running $filename"
+gcc -o $filename.out $filename && ./$filename
