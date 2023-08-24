@@ -10,4 +10,4 @@ filename=$1
 
 # Print the file name
 echo "Running $filename"
-gcc -o $filename.out $filename --debug && ./$filename
+gcc -o $filename.out $filename --debug && ./$filename.out
