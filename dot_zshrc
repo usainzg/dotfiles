@@ -2,7 +2,7 @@
 export EDITOR="nvim"
 
 
-alias crun = "bash ~/.scripts/c_lang/crun.sh"
+alias crun="bash ~/.scripts/c_lang/crun.sh"
 
 
 alias g4bl='/Applications/G4beamline-3.08.app/Contents/MacOS/g4bl'
