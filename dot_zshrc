@@ -1,5 +1,5 @@
  PATH="/Applications/CMake.app/Contents/bin":"$PATH"
-
+export EDITOR="nvim"
 
 alias g4bl='/Applications/G4beamline-3.08.app/Contents/MacOS/g4bl'
 alias g4blmpi='/Applications/G4beamline-3.08.app/Contents/MacOS/g4blmpi'
