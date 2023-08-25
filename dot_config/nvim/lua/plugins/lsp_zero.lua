@@ -32,6 +32,9 @@ return {
                 "lua_ls",
                 "rust_analyzer",
 
+                -- Run pip install python-language-server
+                -- Then in neovim, runs :PylspInstall pyls-flake8 pylsp-mypy pyls-isort
+
                 "pylsp",
 
                 -- C, C++, CMAKE
@@ -51,6 +54,20 @@ return {
         }
 
         require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+        require("lspconfig").pylsp.setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        black = { enable = true },
+                        pylsp_mypy = { enabled = true },
+                        pyls_isort = { enabled = true },
+                        pyflakes = { enabled = true },
+
+                    }
+                }
+            }
+        }
+        )
         lsp.setup()
 
         local cmp = require("cmp")
