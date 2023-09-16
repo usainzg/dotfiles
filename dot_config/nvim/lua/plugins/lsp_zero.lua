@@ -50,6 +50,9 @@ return {
 
                 -- BASH SCRIPT
                 "bashls",
+
+                -- OCAML
+                "ocamllsp",
             },
         }
 
