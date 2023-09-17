@@ -53,6 +53,7 @@ return {
 
                 -- OCAML
                 "ocamllsp",
+                "ocamlformat",
             },
         }
 
