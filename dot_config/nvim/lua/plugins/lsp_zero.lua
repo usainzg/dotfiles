@@ -50,10 +50,6 @@ return {
 
                 -- BASH SCRIPT
                 "bashls",
-
-                -- OCAML
-                "ocamllsp",
-                "ocamlformat",
             },
         }
 
@@ -72,7 +68,6 @@ return {
             }
         }
         )
-        require('lspconfig').ocamllsp.setup({})
         lsp.setup()
 
         local cmp = require("cmp")

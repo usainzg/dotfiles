@@ -1,4 +1,4 @@
- PATH="/Applications/CMake.app/Contents/bin":"$PATH"
+PATH="/Applications/CMake.app/Contents/bin":"$PATH"
 export EDITOR="nvim"
 
 
@@ -55,3 +55,6 @@ source /Users/jjsm/Downloads/jintonic-gears-5b2de62/gears.sh
 export PATH="/opt/homebrew/opt/llvm/bin/:$PATH"
 export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/Cellar"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# opam configuration
+[[ ! -r /Users/jjsm/.opam/opam-init/init.zsh ]] || source /Users/jjsm/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
