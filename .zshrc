@@ -99,6 +99,7 @@ alias n="nvim"
 alias g="git"
 alias lzg="lazygit"
 alias fls="flameshot gui"
+alias lsa="exa --long"
 
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
