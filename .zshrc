@@ -108,3 +108,5 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(atuin init zsh)"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 export PATH=$HOME/.local/bin:$PATH
+
+. "$HOME/.atuin/bin/env"
