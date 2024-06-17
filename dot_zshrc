@@ -107,9 +107,12 @@ source $ZSH/oh-my-zsh.sh
 function activate_venv() {
     if [ -d "./venv" ]; then
         source ./venv/bin/activate
-    f))i
+    fi
 }
 
 
 activate_venv
 export EDITOR="nvim"
+export PATH=/opt/homebrew/bin:$PATH
+
+
