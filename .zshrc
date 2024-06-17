@@ -95,13 +95,22 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias v="nvim"
+alias n="nvim"
+alias g="git"
+alias lzg="lazygit"
+alias fls="flameshot gui"
+
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzf"
+
 alias sup="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
 alias brup="brew update -v && brew upgrade -v && brew cleanup -v"
 alias up="sup && brup"
+
 alias zshconfig="v ~/.zshrc"
 alias ohmyzsh="v ~/.oh-my-zsh"
 alias i3config="v ~/.config/i3/config"
+
 alias shut="sudo shutdown -h now"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
