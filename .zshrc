@@ -110,9 +110,9 @@ alias sup="sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y"
 alias brup="brew update -v && brew upgrade -v && brew cleanup -v"
 alias up="sup && brup"
 
-alias zshconfig="v ~/.zshrc"
-alias ohmyzsh="v ~/.oh-my-zsh"
-alias i3config="v ~/.config/i3/config"
+alias zshconfig="n ~/.zshrc"
+alias ohmyzsh="n ~/.oh-my-zsh"
+alias i3config="n ~/.config/i3/config"
 
 alias shut="sudo shutdown -h now"
 
