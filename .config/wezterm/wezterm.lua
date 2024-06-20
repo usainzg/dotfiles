@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("BerkeleyMono Nerd Font")
 config.font_size = 10.0
+config.enable_tab_bar = false
 
 -- and finally, return the configuration to wezterm
 return config
