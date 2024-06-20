@@ -108,6 +108,10 @@ function activate_venv() {
     if [ -d "./venv" ]; then
         source ./venv/bin/activate
     fi
+
+    if [ -d ".venv" ]; then
+        source .venv/bin/activate
+    fi
 }
 
 
@@ -115,4 +119,4 @@ activate_venv
 export EDITOR="nvim"
 export PATH=/opt/homebrew/bin:$PATH
 
-
+eval "$(atuin init zsh)"
