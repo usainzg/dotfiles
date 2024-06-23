@@ -108,10 +108,6 @@ function activate_venv() {
     if [ -d "./venv" ]; then
         source ./venv/bin/activate
     fi
-
-    if [ -d ".venv" ]; then
-        source .venv/bin/activate
-    fi
 }
 
 
@@ -120,3 +116,6 @@ export EDITOR="nvim"
 export PATH=/opt/homebrew/bin:$PATH
 
 eval "$(atuin init zsh)"
+
+# opam configuration
+[[ ! -r /Users/jjasmine/.opam/opam-init/init.zsh ]] || source /Users/jjasmine/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
