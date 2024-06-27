@@ -114,7 +114,8 @@ function activate_venv() {
 activate_venv
 export EDITOR="nvim"
 export PATH=/opt/homebrew/bin:$PATH
-
+export PATH=~/.local/bin:$PATH
+source <(fzf --zsh)
 eval "$(atuin init zsh)"
 
 # opam configuration
