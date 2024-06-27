@@ -66,7 +66,6 @@ return {
         }
         )
 
-        require("lspconfig").ocamllsp.setup()
         lsp.setup()
 
         local cmp = require("cmp")

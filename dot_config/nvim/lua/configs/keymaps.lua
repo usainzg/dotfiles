@@ -30,7 +30,17 @@ keymap("n", "<S-j>", ":lua vim.lsp.buf.code_action()<CR>")
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 
-
+keymap("n", "<leader>t1", "1gt", opts)
+keymap("n", "<leader>t2", "2gt", opts)
+keymap("n", "<leader>t3", "3gt", opts)
+keymap("n", "<leader>t4", "4gt", opts)
+keymap("n", "<leader>t5", "5gt", opts)
+keymap("n", "<leader>t6", "6gt", opts)
+keymap("n", "<leader>t7", "7gt", opts)
+keymap("n", "<leader>t8", "8gt", opts)
+keymap("n", "<leader>t9", "9gt", opts)
+keymap("n", "<leader>t0", "0gt", opts)
+-- THIS IS FOR DEBUGGING
 vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)
 vim.keymap.set('n', '<Leader>7', function() require('dap').step_over() end)
