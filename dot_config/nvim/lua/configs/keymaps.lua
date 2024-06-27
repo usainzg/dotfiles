@@ -26,17 +26,7 @@ keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- SET UP KEYMAP FOR CODE ACTION
 keymap("n", "<S-j>", ":lua vim.lsp.buf.code_action()<CR>")
-local open_or_move_to_tab = function()
-    local term = "terminal"
-    if vim.fn.bufexists(term) == 1 then
-        vim.cmd("drop " .. term)
-    else
-        vim.cmd("tabnew | terminal")
-        vim.cmd("file terminal")
-    end
-end
 
-keymap("n", "<leader>t", open_or_move_to_tab, opts)
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 

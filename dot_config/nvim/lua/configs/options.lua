@@ -24,5 +24,5 @@ vim.opt.termguicolors  = true
 vim.opt.syntax         = "on"
 
 vim.diagnostic.config({
-    virtual_text = false,
+    virtual_text = true,
 })
