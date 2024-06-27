@@ -42,12 +42,6 @@ return {
                 "cmake",
 
 
-                -- GO, GOLANG
-                "golangci_lint_ls",
-                "gopls",
-
-
-
                 -- BASH SCRIPT
                 "bashls",
             },
