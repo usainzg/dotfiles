@@ -20,6 +20,7 @@ return {
 
 
     config = function()
+        require('mason').setup()
         local lsp = require('lsp-zero').preset({})
 
         lsp.on_attach(function(client, bufnr)

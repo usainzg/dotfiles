@@ -115,6 +115,7 @@ activate_venv
 export EDITOR="nvim"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=~/.local/bin:$PATH
+autoload -Uz compinit && compinit
 source <(fzf --zsh)
 eval "$(atuin init zsh)"
 
