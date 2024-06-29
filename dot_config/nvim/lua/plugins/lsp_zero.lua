@@ -20,7 +20,7 @@ return {
 
 
     config = function()
-        require('mason').setup()
+        require("mason").setup({})
         local lsp = require('lsp-zero').preset({})
 
         lsp.on_attach(function(client, bufnr)
@@ -49,23 +49,12 @@ return {
                 -- OCAML
                 "ocamllsp"
             },
+            handlers = {
+                function(server_name)
+                    require('lspconfig')[server_name].setup({})
+                end,
+            },
         }
-
-        require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-        require("lspconfig").pylsp.setup({
-            settings = {
-                pylsp = {
-                    plugins = {
-                        black = { enable = true },
-                        pylsp_mypy = { enabled = true },
-                        pyls_isort = { enabled = true },
-                        pyflakes = { enabled = true },
-
-                    }
-                }
-            }
-        }
-        )
 
         lsp.setup()
 
