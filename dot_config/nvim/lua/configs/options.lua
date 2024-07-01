@@ -1,6 +1,8 @@
 vim.opt.hlsearch = true
 vim.opt.mouse = "a"
 
+vim.api.nvim_set_option("clipboard", "unnamed")
+
 
 vim.opt.relativenumber = true
 vim.opt.number         = true
