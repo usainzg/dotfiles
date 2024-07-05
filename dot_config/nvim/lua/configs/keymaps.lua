@@ -24,15 +24,25 @@ keymap("n", "<S-h>", ":tabprevious<CR>", opts)
 
 keymap("n", "<leader>q", ":q<CR>", opts)
 
--- SET UP KEYMAP FOR CODE ACTION
-keymap("n", "<S-j>", ":lua vim.lsp.buf.code_action()<CR>")
+-- SET UP KEYMAP FOR LSP
+keymap("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")      -- Show code actions
+keymap("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")           -- Rename symbols with scope-correctness
+keymap("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>")      -- Go to definition
+keymap("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>")     -- Go to declaration
 
+keymap("n", "<leader>lim", ":lua vim.lsp.buf.implementation()<CR>")  -- Go to implementation
+keymap("n", "<leader>lic", ":lua vim.lsp.buf.incoming_calls()<CR>")  -- Show incoming calls to the function under the cursor
+keymap("n", "<leader>loc", ":lua vim.lsp.buf.outgoing_calls()<CR>")  -- Show outgoing calls from the function under the cursor
+keymap("n", "<leader>ltd", ":lua vim.lsp.buf.type_definition()<CR>") -- Go to type definition
+keymap("n", "<leader>lth", ":lua vim.lsp.buf.typehierachy()<CR>")    -- Show type hierarchy
+
+-- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 
-keymap("n", "<leader>t1", "1gt", opts)
-keymap("n", "<leader>t2", "2gt", opts)
-keymap("n", "<leader>t3", "3gt", opts)
+keymap("n", "<leader>t1", "1gt", opts) -- Switch to tab 1
+keymap("n", "<leader>t2", "2gt", opts) -- Switch to tab 2
+keymap("n", "<leader>t3", "3gt", opts) -- Switch to tab 3
 keymap("n", "<leader>t4", "4gt", opts)
 keymap("n", "<leader>t5", "5gt", opts)
 keymap("n", "<leader>t6", "6gt", opts)
