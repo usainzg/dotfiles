@@ -4,7 +4,8 @@
 	name = badumbatish
 	email = tanghocle456@gmail.com
 [alias]
-	lg = log --name-status --graph --color
+    lg = log --name-status --graph --color
+    sts = status 
 [init]
 	defaultBranch = main
 [core]
