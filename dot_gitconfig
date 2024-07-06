@@ -6,6 +6,26 @@
 [alias]
     lg = log --name-status --graph --color
     sts = status 
+    commit-with-prefix = "!f() { \
+        prefix=$1; \
+        shift; \
+        if [ $# -eq 0 ]; then \
+            echo \"Enter the git commit $prefix description: \"; \
+            read description; \
+        else \
+            description=\"$*\"; \
+        fi; \
+        git commit -m \"$prefix: $description\"; \
+    }; f"
+
+    aoe = "!git commit --amend --no-edit"
+    fix = "!git commit-with-prefix Fix"
+    feat = "!git commit-with-prefix Feat"
+    docs = "!git commit-with-prefix Docs"
+    refactor = "!git commit-with-prefix Refactor"
+    style = "!git commit-with-prefix Style"
+    test = "!git commit-with-prefix Test"
+    ci = "!git commit-with-prefix CI/CD"
 [init]
 	defaultBranch = main
 [core]
