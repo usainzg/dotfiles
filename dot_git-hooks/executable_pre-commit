@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Check if we're in a Rust project (Cargo.toml exists)
+if [ -f Cargo.toml ]; then
+    echo "Rust project detected. Running checks: Build, Test, Clippy..."
+
+    # Run cargo build
+    echo "Running cargo build..."
+    if ! cargo build; then
+        echo "Build failed. Commit aborted."
+        exit 1
+    fi
+    echo "Build passed."
+
+    # Run cargo test
+    echo "Running cargo test..."
+    if ! cargo test; then
+        echo "Tests failed. Commit aborted."
+        exit 1
+    fi
+    echo "Tests passed."
+
+    # Run Cargo Clippy with warnings as errors
+    if ! cargo clippy -- -D warnings; then
+        echo "Clippy found issues. Push aborted."
+        exit 1
+    fi
+
+    echo "Clippy check passed."
+fi
+
+exit 0

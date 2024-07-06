@@ -1,0 +1,11 @@
+# This is Git's per-user configuration file.
+# Please adapt and uncomment the following lines:
+[user]
+	name = badumbatish
+	email = tanghocle456@gmail.com
+[alias]
+	lg = log --name-status --graph --color
+[init]
+	defaultBranch = main
+[core]
+	hooksPath = /Users/jjasmine/.git-hooks
