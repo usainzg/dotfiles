@@ -4,7 +4,8 @@
 	name = badumbatish
 	email = tanghocle456@gmail.com
 [alias]
-    lg = log --name-status --graph --color
+    lg = log --name-status --graph --color --pretty=format:'%Cred%h%Creset - %Cred%H%Creset  - %Cgreen%as%Creset - %C(yellow)%d%Creset %+C(bold blue)%an%Creset - %Cgreen%s%Creset '
+     
     sts = status 
     commit-with-prefix = "!f() { \
         prefix=$1; \
@@ -17,6 +18,7 @@
         fi; \
         git commit -m \"$prefix: $description\"; \
     }; f"
+    c = "!f() { if [ $(basename $(pwd)) = 'gccrs' ]; then git gcc-commit-mklog -s; else git commit; fi; }; f"
 
     aoe = "!git commit --amend --no-edit"
     fix = "!git commit-with-prefix Fix"
