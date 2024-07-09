@@ -21,14 +21,14 @@
     c = "!f() { if [ $(basename $(pwd)) = 'gccrs' ]; then git gcc-commit-mklog -s; else git commit; fi; }; f"
 
     aoe = "!git commit --amend --no-edit"
-    fix = "!git commit-with-prefix Fix"
-    feat = "!git commit-with-prefix Feat"
-    docs = "!git commit-with-prefix Docs"
-    refactor = "!git commit-with-prefix Refactor"
-    style = "!git commit-with-prefix Style"
-    test = "!git commit-with-prefix Test"
+    fix = "!git commit-with-prefix FIX"
+    feat = "!git commit-with-prefix FEAT"
+    docs = "!git commit-with-prefix DOCS"
+    refactor = "!git commit-with-prefix REFACTOR"
+    style = "!git commit-with-prefix STYLE"
+    test = "!git commit-with-prefix TEST"
     ci = "!git commit-with-prefix CI/CD"
 [init]
 	defaultBranch = main
 [core]
-	hooksPath = /Users/jjasmine/.git-hooks
+	hooksPath = ~/.git-hooks
