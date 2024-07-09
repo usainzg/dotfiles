@@ -22,16 +22,16 @@ return {
 
 
             -- SET UP KEYMAP FOR LSP, POTENTIALLY VIA TELESCOPE
-            vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>") -- Show code actions
-            vim.keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")    -- Rename symbols with scope-correctness
-            vim.keymap.set("n", "<leader>ldf", builtin.lsp_definitions, {})       -- Go to definition
-            vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>") -- Go to declaration
+            vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>")          -- Show code actions
+            vim.keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>")               -- Rename symbols with scope-correctness
+            vim.keymap.set("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>", {})      -- Go to definition
+            vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>")         -- Go to declaration
 
-            vim.keymap.set("n", "<leader>lim", builtin.lsp_implementations, {})   -- Go to implementation
-            vim.keymap.set("n", "<leader>lic", builtin.lsp_incoming_calls, {})    -- Show incoming calls to the function under the cursor
-            vim.keymap.set("n", "<leader>loc", builtin.lsp_outgoing_calls, {})    -- Show outgoing calls from the function under the cursor
-            vim.keymap.set("n", "<leader>ltd", builtin.lsp_type_definitions, {})  -- Go to type definition
-            vim.keymap.set("n", "<leader>lth", ":lua vim.lsp.buf.typehierachy()<CR>") -- Show type hierarchy
+            vim.keymap.set("n", "<leader>lim", ":lua vim.lsp.buf.implementation()<CR>", {})  -- Go to implementation
+            vim.keymap.set("n", "<leader>lic", ":lua vim.lsp.buf.incoming_calls()<CR>", {})  -- Show incoming calls to the function under the cursor
+            vim.keymap.set("n", "<leader>loc", ":lua vim.lsp.buf.outgoing_calls()<CR>", {})  -- Show outgoing calls from the function under the cursor
+            vim.keymap.set("n", "<leader>ltd", ":lua vim.lsp.buf.type_definition()<CR>", {}) -- Go to type definition
+            vim.keymap.set("n", "<leader>lth", ":lua vim.lsp.buf.typehierachy()<CR>")        -- Show type hierarchy
         end
     }
 }
