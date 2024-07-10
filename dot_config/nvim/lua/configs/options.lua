@@ -28,3 +28,27 @@ vim.opt.syntax         = "on"
 vim.diagnostic.config({
     virtual_text = true,
 })
+
+-- Enable autoread
+vim.o.autoread = true
+
+-- Check if file has changed on disk
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    pattern = "*",
+    callback = function()
+        if vim.fn.mode() ~= "c" then
+            vim.cmd("checktime")
+        end
+    end
+})
+
+-- Notification after file change
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    pattern = "*",
+    callback = function()
+        vim.api.nvim_echo({ {
+            "File changed on disk. Buffer reloaded.",
+            "WarningMsg"
+        } }, true, {})
+    end
+})
