@@ -39,6 +39,18 @@ keymap("n", "<leader>t7", "7gt", opts)
 keymap("n", "<leader>t8", "8gt", opts)
 keymap("n", "<leader>t9", "9gt", opts)
 keymap("n", "<leader>t0", "0gt", opts)
+
+keymap("n", "1t", "1gt", opts) -- Switch to tab 1
+keymap("n", "2t", "2gt", opts) -- Switch to tab 2
+keymap("n", "3t", "3gt", opts) -- Switch to tab 3
+keymap("n", "4t", "4gt", opts)
+keymap("n", "5t", "5gt", opts)
+keymap("n", "6t", "6gt", opts)
+keymap("n", "7t", "7gt", opts)
+keymap("n", "8t", "8gt", opts)
+keymap("n", "9t", "9gt", opts)
+keymap("n", "0t", "0gt", opts)
+
 -- THIS IS FOR DEBUGGING
 vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)

@@ -7,6 +7,7 @@
     lg = log --name-status --graph --color --pretty=format:'%Cred%h%Creset - %Cred%H%Creset  - %Cgreen%as%Creset - %C(yellow)%d%Creset %+C(bold blue)%an%Creset - %Cgreen%s%Creset '
      
     sts = status 
+    co = checkout
     commit-with-prefix = "!f() { \
         prefix=$1; \
         shift; \
@@ -28,6 +29,7 @@
     style = "!git commit-with-prefix STYLE"
     test = "!git commit-with-prefix TEST"
     ci = "!git commit-with-prefix CI/CD"
+    brsel = "!git branch | fzf | pbcopy"
 [init]
 	defaultBranch = main
 [core]
