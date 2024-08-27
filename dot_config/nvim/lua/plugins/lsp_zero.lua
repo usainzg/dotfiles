@@ -47,7 +47,10 @@ return {
                 "bashls",
 
                 -- OCAML
-                "ocamllsp"
+                "ocamllsp",
+
+                -- Elixir
+                "elixirls",
             },
             handlers = {
                 function(server_name)

@@ -25,7 +25,9 @@ return {
             api.config.mappings.default_on_attach(bufnr)
             vim.keymap.set('n', '<C-t>', api.node.open.drop, opts('Open in window, replace if exists '))
             vim.keymap.set('n', '<CR>', api.node.open.tab_drop, opts('Open in new tab, replace if exists'))
-        end
+            vim.keymap.set('n', '<S-l>', ":tabnext<CR>", opts('Go to next tab'))
+            vim.keymap.set('n', '<S-h>', ":tabprevious<CR>", opts('Go to prev tab'))
+       end
         require("nvim-tree").setup {
             view = {
                 relativenumber = true,

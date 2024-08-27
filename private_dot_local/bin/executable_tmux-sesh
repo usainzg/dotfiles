@@ -21,7 +21,7 @@ fi
 
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -d -s $selected_name -c $selected
-    tmux new-window
+    tmux new-window -c $selected -n "terminal_${selected_name}"
     tmux select-window -t 0
     tmux send-keys -t 0 'neofetch' C-m
 
