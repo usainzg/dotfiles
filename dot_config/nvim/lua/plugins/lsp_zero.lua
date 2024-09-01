@@ -1,6 +1,6 @@
 return {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v4.x',
     dependencies = {
         -- LSP Support
         { 'neovim/nvim-lspconfig' }, -- Required
@@ -21,7 +21,7 @@ return {
 
     config = function()
         require("mason").setup({})
-        local lsp = require('lsp-zero').preset({})
+        local lsp = require('lsp-zero')
 
         lsp.on_attach(function(client, bufnr)
             lsp.default_keymaps({ buffer = bufnr })
@@ -65,6 +65,10 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
+            preselect = cmp.PreselectMode.None,
+            completion = {
+                completeopt = vim.o.completeopt
+            },
             sources = {
                 { name = "path" },
                 { name = "nvim_lsp_signature_help" },
@@ -75,6 +79,9 @@ return {
             },
             mapping = {
                 ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-Y>"] = cmp.mapping.confirm(),
+                ["<C-N>"] = cmp.mapping.select_next_item(),
+                ["<C-P>"] = cmp.mapping.select_prev_item(),
             }
         })
     end
