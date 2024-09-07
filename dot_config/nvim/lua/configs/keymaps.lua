@@ -17,7 +17,9 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 
 keymap("v", "<", "<gv^", opts)
+keymap("v", "<BS>", "<gv^", opts)
 keymap("v", ">", ">gv^", opts)
+keymap("v", "<Tab>", ">gv^", opts)
 
 keymap("n", "<S-l>", ":tabnext<CR>", opts)
 keymap("n", "<S-h>", ":tabprevious<CR>", opts)
