@@ -27,6 +27,7 @@ keymap("n", "<S-h>", ":tabprevious<CR>", opts)
 keymap("n", "<leader>q", ":q<CR>", opts)
 keymap("n", "<leader>s", ":w<CR>", opts)
 
+keymap("n", "gs", ":%sm/", opts)
 -- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
