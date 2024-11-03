@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+	selected=$1
 else
-    selected=$(find ~/Developer/github ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+	selected=$(find ~/Developer/github ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
@@ -15,20 +15,32 @@ tmux_running=$(pgrep tmux)
 
 # Start tmux if it is not running
 if [[ -z $tmux_running ]]; then
-    tmux new-session -d
-    tmux_running=$(pgrep tmux)
+	tmux new-session -d
+	tmux_running=$(pgrep tmux)
 fi
 
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
-    tmux new-session -d -s $selected_name -c $selected
-    tmux new-window -c $selected -n "terminal_${selected_name}"
-    tmux select-window -t 0
-    tmux send-keys -t 0 'neofetch' C-m
+	tmux new-session -d -s $selected_name -c $selected
+
+	tmux new-window -c $selected -n "terminal_${selected_name}"
+	#
+	# Split the window vertically (main pane on left)
+	tmux split-window -h -c $selected -l 33%
+
+	# Split the right pane horizontally
+	tmux split-window -v -c $selected
+	# Select the main (left) pane
+	tmux select-pane -t 0
+
+	tmux select-window -t 0
+	tmux send-keys -t 0 'neofetch' C-m
+	tmux send-keys -t 1.0 'git status' C-j
+	tmux send-keys -t 1.1 'ls' C-j
 
 fi
 
 if [[ -z $TMUX ]]; then
-    tmux attach-session -t $selected_name
+	tmux attach-session -t $selected_name
 else
-    tmux switch-client -t $selected_name
+	tmux switch-client -t $selected_name
 fi
