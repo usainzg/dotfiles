@@ -1,3 +1,7 @@
+function string:contains(sub)
+	return self:find(sub, 1, true) ~= nil
+end
+
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -24,7 +28,25 @@ keymap("v", "<Tab>", ">gv^", opts)
 keymap("n", "<S-l>", ":tabnext<CR>", opts)
 keymap("n", "<S-h>", ":tabprevious<CR>", opts)
 
-keymap("n", "<leader>q", ":q<CR>", opts)
+-- keymap("n", "<leader>q", ":q<CR>", opts)
+-- keymap("t", "<leader>q", ":bd<CR>", opts)
+
+-- function handle_quit()
+-- 	local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
+-- 	print("Keymap triggered!")
+-- 	if buftype == "terminal" then
+-- 		vim.cmd("bw!")
+-- 	else
+-- 		vim.cmd("q")
+-- 	end
+-- end
+
+-- vim.keymap.set('n', '<leader>q', function()
+-- 	-- print("Keymap triggered!")
+-- 	handle_quit()
+-- end, { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>q", ":lua handle_quit()", opts)
+
 keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 

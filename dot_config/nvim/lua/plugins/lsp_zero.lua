@@ -7,7 +7,7 @@ return {
 			'neovim/nvim-lspconfig',
 			dependencies = {
 				{
-					"SmiteshP/nvim-navbuddy",
+	    				"SmiteshP/nvim-navbuddy",
 					dependencies = {
 						"SmiteshP/nvim-navic",
 						"MunifTanjim/nui.nvim"
@@ -25,9 +25,9 @@ return {
 		{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 		-- Autocompletion
-		{ 'hrsh7th/nvim-cmp' },     -- Required
+		{ 'hrsh7th/nvim-cmp' }, -- Required
 		{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
-		{ 'L3MON4D3/LuaSnip' },     -- Required
+		{ 'L3MON4D3/LuaSnip' }, -- Required
 	},
 
 
@@ -57,9 +57,6 @@ return {
 
 				-- BASH SCRIPT
 				"bashls",
-
-				-- OCAML
-				"ocamllsp",
 
 				-- Elixir
 				"elixirls",
