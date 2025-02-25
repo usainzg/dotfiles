@@ -7,11 +7,11 @@ return {
         local project_map = {
             ["sammine-lang/"] = {
                 build_command =
-                "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1  && cmake --build build -j4'",
+                "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1  && cmake --build build -j4",
                 run_command = "./build/src/sammine -f unit-tests/artifacts/valid_grammar.txt --llvm-ir --diagnostics"
 
                 ,
-                test_command = "ctest --test-dir build --output-on-failure'",
+                test_command = "ctest --test-dir build --output-on-failure",
                 name = "sammine-lang"
             },
             ["Shuriken-Analyzer/"] = {
