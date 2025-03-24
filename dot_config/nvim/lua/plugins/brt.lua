@@ -16,7 +16,7 @@ return {
             },
             ["Shuriken-Analyzer/"] = {
                 build_command =
-                "cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DDEX_TESTS=ON -DCMAKE_BUILD_TYPE=Debug && cmake --build build -j4",
+                "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DLLVM_DIR=~/Developer/llvm-install/lib/cmake/llvm/ -DMLIR_DIR=~/Developer/llvm-install/lib/cmake/mlir -DMJOLNIR=ON && cmake --build build -j4",
                 run_command = "",
                 test_command = "ctest --test-dir build --output-on-failure",
                 name = "Shuriken"

@@ -14,6 +14,7 @@ return {
             config = function()
                 require('telescope').load_extension('fzf')
                 require('telescope').load_extension('live_grep_args')
+                local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
                 local builtin = require('telescope.builtin')
                 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
                 vim.keymap.set("n", "<leader>fg",
@@ -22,6 +23,9 @@ return {
                 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
                 vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, {})
 
+
+                vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor)
+                vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection)
 
 
                 -- SET UP KEYMAP FOR LSP, POTENTIALLY VIA TELESCOPE
