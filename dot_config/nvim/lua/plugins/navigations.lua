@@ -41,7 +41,7 @@ return {
                 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
                 vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, {})
 
-                vim.keymap.set('n', '<leader>fr', builtin.resume, {})
+                vim.keymap.set('n', '<leader>fr', builtin.pickers, {})
                 vim.keymap.set('n', '<leader>fp', builtin.pickers, {})
 
                 vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor)
