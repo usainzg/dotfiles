@@ -12,9 +12,6 @@ return {
 
         config = function()
             require('lualine').setup {
-                sections = {
-                    lualine_x = { require("action-hints").statusline },
-                },
                 options = {
                     theme = "catppuccin",
                 }
