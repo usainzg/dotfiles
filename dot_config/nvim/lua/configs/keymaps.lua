@@ -50,6 +50,54 @@ keymap("n", "<S-h>", ":tabprevious<CR>", opts)
 keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 
+local function get_matching_file(extensions, file_type)
+	local filename = vim.api.nvim_buf_get_name(0)
+	local old_filename = filename
+	local basename = vim.fn.fnamemodify(filename, ":t:r") -- filename without extension
+
+	-- Build regex pattern from extensions array
+	local pattern = table.concat(extensions, "\\|")
+	local handle = io.popen("find . -type f -regex '.*" .. basename .. "\\.\\(" .. pattern .. "\\)'")
+
+	if not handle then
+		print("Failed to run search command for " .. file_type .. ".")
+		return
+	end
+
+	local result = handle:read("*a")
+	handle:close()
+
+	local files = {}
+	for line in result:gmatch("[^\r\n]+") do
+		if line:match("%." .. basename .. "%.") == nil then
+			table.insert(files, line)
+		end
+	end
+
+	if #files == 0 then
+		print("No corresponding " .. file_type .. " file found for " .. basename)
+		return
+	end
+
+	return { old_filename, files[1] }
+end
+
+
+vim.keymap.set("n", "<leader>c", function()
+	local curr_and_match = get_matching_file({ "cpp", "cc", "cxx" }, ".cpp/.cc/.cxx")
+
+	vim.cmd("e " .. curr_and_match[2])
+	vim.cmd("vsplit " .. curr_and_match[1])
+end, { desc = "Open matching .cpp file in vertical split" })
+
+vim.keymap.set("n", "<leader>h", function()
+	local curr_and_match = get_matching_file({ "h", "hpp", "hxx" }, ".h/.hpp/.hxx")
+
+	vim.cmd("e " .. curr_and_match[1])
+	vim.cmd("vsplit " .. curr_and_match[2])
+end, { desc = "Open matching .header file in vertical split" })
+
+
 keymap("n", "gs", ":%sm/", opts)
 -- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
