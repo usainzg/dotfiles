@@ -85,7 +85,7 @@ end
 
 vim.keymap.set("n", "<leader>c", function()
 	local curr_and_match = get_matching_file({ "cpp", "cc", "cxx" }, ".cpp/.cc/.cxx")
-
+	if curr_and_match == nil then return end
 	vim.cmd("e " .. curr_and_match[2])
 	vim.cmd("vsplit " .. curr_and_match[1])
 end, { desc = "Open matching .cpp file in vertical split" })
@@ -93,6 +93,7 @@ end, { desc = "Open matching .cpp file in vertical split" })
 vim.keymap.set("n", "<leader>h", function()
 	local curr_and_match = get_matching_file({ "h", "hpp", "hxx" }, ".h/.hpp/.hxx")
 
+	if curr_and_match == nil then return end
 	vim.cmd("e " .. curr_and_match[1])
 	vim.cmd("vsplit " .. curr_and_match[2])
 end, { desc = "Open matching .header file in vertical split" })
