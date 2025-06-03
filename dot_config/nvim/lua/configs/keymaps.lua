@@ -104,25 +104,6 @@ keymap("n", "gs", ":%sm/", opts)
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 
-keymap("n", "<leader>t1", "1gt", opts) -- Switch to tab 1
-
-keymap("n", "<leader>t2", "2gt", opts) -- Switch to tab 2
-
-keymap("n", "<leader>t3", "3gt", opts) -- Switch to tab 3
-
-keymap("n", "<leader>t4", "4gt", opts)
-
-keymap("n", "<leader>t5", "5gt", opts)
-
-keymap("n", "<leader>t6", "6gt", opts)
-
-keymap("n", "<leader>t7", "7gt", opts)
-
-keymap("n", "<leader>t8", "8gt", opts)
-
-keymap("n", "<leader>t9", "9gt", opts)
-
-keymap("n", "<leader>t0", "0gt", opts)
 
 -- THIS IS FOR DEBUGGING
 -- vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
