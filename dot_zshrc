@@ -118,12 +118,7 @@ export EDITOR="nvim"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=~/.local/bin:$PATH
 autoload -Uz compinit && compinit
-. "$HOME/.cargo/env"
 # source <(fzf --zsh)
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
 
-# opam configuration
-[[ ! -r /Users/jjasmine/.opam/opam-init/init.zsh ]] || source /Users/jjasmine/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
-. "$HOME/.atuin/bin/env"
