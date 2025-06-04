@@ -34,31 +34,34 @@ return {
 					}, }
 
 
-				vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+				vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
 				vim.keymap.set("n", "<leader>fg",
-					":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-				vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-				vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-				vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, {})
+					":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "Find words" })
+				vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffers" })
+				vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags" })
+				vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, { desc = "Find in current buffer" })
 
-				vim.keymap.set('n', '<leader>fr', builtin.pickers, {})
-				vim.keymap.set('n', '<leader>fp', builtin.pickers, {})
+				vim.keymap.set('n', '<leader>fr', builtin.pickers, { desc = "Telescope search history" })
+				vim.keymap.set('n', '<leader>fp', builtin.pickers, { desc = "Telescope search history" })
 
-				vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor)
-				vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection)
+				vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor,
+					{ desc = "Ripgrep under cursor" })
+				vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection
+					{ desc = "Ripgrep selection" })
 
 
 				-- SET UP KEYMAP FOR LSP, POTENTIALLY VIA TELESCOPE
-				vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>") -- Show code actions
-				vim.keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>") -- Rename symbols with scope-correctness
-				vim.keymap.set("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>", {}) -- Go to definition
-				vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>") -- Go to declaration
-
-				vim.keymap.set("n", "<leader>m", builtin.lsp_implementations, {}) -- Go to implementation
-				vim.keymap.set("n", "<leader>i", ":lua vim.lsp.buf.incoming_calls()<CR>", {}) -- Show incoming calls to the function under the cursor
-				vim.keymap.set("n", "<leader>o", ":lua vim.lsp.buf.outgoing_calls()<CR>", {}) -- Show outgoing calls from the function under the cursor
-				vim.keymap.set("n", "<leader>td", builtin.lsp_type_definitions)   -- Go to type definition
-				vim.keymap.set("n", "<leader>th", ":lua vim.lsp.buf.typehierachy()<CR>") -- Show type hierarchy
+				vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>",
+					{ desc = "Code actions" })
+				vim.keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>",
+					{ desc = "Rename word under cursor" })
+				-- vim.keymap.set("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>")
+				-- vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>") -- Go to declaration
+				-- vim.keymap.set("n", "<leader>m", builtin.lsp_implementations, {}) -- Go to implementation
+				-- vim.keymap.set("n", "<leader>i", ":lua vim.lsp.buf.incoming_calls()<CR>", {}) -- Show incoming calls to the function under the cursor
+				-- vim.keymap.set("n", "<leader>o", ":lua vim.lsp.buf.outgoing_calls()<CR>", {}) -- Show outgoing calls from the function under the cursor
+				-- vim.keymap.set("n", "<leader>td", builtin.lsp_type_definitions)   -- Go to type definition
+				-- vim.keymap.set("n", "<leader>th", ":lua vim.lsp.buf.typehierachy()<CR>") -- Show type hierarchy
 			end
 		}
 	},

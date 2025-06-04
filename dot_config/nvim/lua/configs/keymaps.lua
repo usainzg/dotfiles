@@ -1,3 +1,4 @@
+local utils = require("utils")
 function string:contains(sub)
 	return self:find(sub, 1, true) ~= nil
 end
@@ -98,6 +99,20 @@ vim.keymap.set("n", "<leader>h", function()
 	vim.cmd("vsplit " .. curr_and_match[2])
 end, { desc = "Open matching .header file in vertical split" })
 
+vim.keymap.set("x", "<leader>lr", function()
+	local selected = utils.extract_vis_text()
+	vim.print("Selected text : " .. selected)
+
+	local selected_escaped = utils.jasmine_escape(selected)
+	vim.print("escaped text : " .. selected_escaped)
+
+	local change = vim.fn.input({ prompt = "Mass change: ", default = selected })
+
+	vim.print("change: " .. change)
+
+	local change_escape = utils.jasmine_escape(change)
+	vim.cmd("!find .  -type f | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
+end, { desc = "selected" })
 
 keymap("n", "gs", ":%sm/", opts)
 -- QUICKLY EXIT TERMINAL MODE
