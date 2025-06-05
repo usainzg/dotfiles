@@ -57,8 +57,7 @@ return {
 					{ desc = "Rename word under cursor" })
 				-- vim.keymap.set("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>")
 				-- vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>") -- Go to declaration
-				-- vim.keymap.set("n", "<leader>m", builtin.lsp_implementations, {}) -- Go to implementation
-				-- vim.keymap.set("n", "<leader>i", ":lua vim.lsp.buf.incoming_calls()<CR>", {}) -- Show incoming calls to the function under the cursor
+				-- vim.keymap.set("n" "<leader>i", ":lua vim.lsp.buf.incoming_calls()<CR>", {}) -- Show incoming calls to the function under the cursor
 				-- vim.keymap.set("n", "<leader>o", ":lua vim.lsp.buf.outgoing_calls()<CR>", {}) -- Show outgoing calls from the function under the cursor
 				-- vim.keymap.set("n", "<leader>td", builtin.lsp_type_definitions)   -- Go to type definition
 				-- vim.keymap.set("n", "<leader>th", ":lua vim.lsp.buf.typehierachy()<CR>") -- Show type hierarchy

@@ -29,6 +29,7 @@ keymap("n", "<S-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc =
 
 keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
+vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>", {}) -- Go to implementation
 
 local function get_matching_file(extensions, file_type)
 	local filename = vim.api.nvim_buf_get_name(0)
@@ -37,7 +38,7 @@ local function get_matching_file(extensions, file_type)
 
 	-- Build regex pattern from extensions array
 	local pattern = table.concat(extensions, "\\|")
-	local handle = io.popen("find . -type f -regex '.*" .. basename .. "\\.\\(" .. pattern .. "\\)'")
+	local handle = io.popen("fd . --type f -regex '.*" .. basename .. "\\.\\(" .. pattern .. "\\)'")
 
 	if not handle then
 		print("Failed to run search command for " .. file_type .. ".")
@@ -90,7 +91,7 @@ vim.keymap.set("x", "<leader>lr", function()
 	vim.print("change: " .. change)
 
 	local change_escape = utils.jasmine_escape(change)
-	vim.cmd("!find .  -type f | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
+	vim.cmd("!fd .  --type f | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
 end, { desc = "Mass rename of string" })
 
 vim.keymap.set("n", "gs", ":%sm/", { noremap = true, silent = true, desc = "Highlight words under cursor" })

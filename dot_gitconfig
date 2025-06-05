@@ -33,4 +33,6 @@
 [init]
 	defaultBranch = main
 [core]
-	hooksPath = ~/.git-hooks
+    hooksPath = ~/.git-hooks
+[core]
+    editor = nvim
