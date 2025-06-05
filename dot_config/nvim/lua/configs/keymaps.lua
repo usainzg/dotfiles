@@ -37,8 +37,10 @@ local function get_matching_file(extensions, file_type)
 	local basename = vim.fn.fnamemodify(filename, ":t:r") -- filename without extension
 
 	-- Build regex pattern from extensions array
-	local pattern = table.concat(extensions, "\\|")
-	local handle = io.popen("fd . --type f -regex '.*" .. basename .. "\\.\\(" .. pattern .. "\\)'")
+	local pattern = table.concat(extensions, "|")
+	local cmd = "fd --type f --regex '" .. basename .. "\\.(" .. pattern .. ")' ."
+	vim.print(cmd)
+	local handle = io.popen(cmd)
 
 	if not handle then
 		print("Failed to run search command for " .. file_type .. ".")
@@ -91,7 +93,7 @@ vim.keymap.set("x", "<leader>lr", function()
 	vim.print("change: " .. change)
 
 	local change_escape = utils.jasmine_escape(change)
-	vim.cmd("!fd .  --type f | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
+	vim.cmd("!fd  --type f . | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
 end, { desc = "Mass rename of string" })
 
 vim.keymap.set("n", "gs", ":%sm/", { noremap = true, silent = true, desc = "Highlight words under cursor" })
