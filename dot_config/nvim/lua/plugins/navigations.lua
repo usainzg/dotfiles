@@ -46,7 +46,7 @@ return {
 
 				vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor,
 					{ desc = "Ripgrep under cursor" })
-				vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection
+				vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection,
 					{ desc = "Ripgrep selection" })
 
 

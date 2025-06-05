@@ -6,6 +6,7 @@ else
     selected=$(
         (
             find ~/Developer/github ~/projects -mindepth 1 -maxdepth 1 -type d
+            find ~/Developer/nvim_proj ~/projects -mindepth 1 -maxdepth 1 -type d
             find ~/.config/nvim -maxdepth 0 -type d
         ) | fzf
     )

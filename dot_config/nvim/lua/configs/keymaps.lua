@@ -5,7 +5,6 @@ end
 
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.keymap.set
@@ -20,33 +19,13 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+keymap("v", "<", "<gv^", { noremap = true, silent = true, desc = "Persistent backwards tab #1" })
+keymap("v", "<BS>", "<gv^", { noremap = true, silent = true, desc = "Persistent backwards tab #2" })
+keymap("v", ">", ">gv^", { noremap = true, silent = true, desc = "Persistent forwards tab #1" })
+keymap("v", "<Tab>", ">gv^", { noremap = true, silent = true, desc = "Persistent forwards tab #2" })
 
-keymap("v", "<", "<gv^", opts)
-keymap("v", "<BS>", "<gv^", opts)
-keymap("v", ">", ">gv^", opts)
-keymap("v", "<Tab>", ">gv^", opts)
-
-keymap("n", "<S-l>", ":tabnext<CR>", opts)
-keymap("n", "<S-h>", ":tabprevious<CR>", opts)
-
--- keymap("n", "<leader>q", ":q<CR>", opts)
--- keymap("t", "<leader>q", ":bd<CR>", opts)
-
--- function handle_quit()
--- 	local buftype = vim.api.nvim_buf_get_option(0, 'buftype')
--- 	print("Keymap triggered!")
--- 	if buftype == "terminal" then
--- 		vim.cmd("bw!")
--- 	else
--- 		vim.cmd("q")
--- 	end
--- end
-
--- vim.keymap.set('n', '<leader>q', function()
--- 	-- print("Keymap triggered!")
--- 	handle_quit()
--- end, { noremap = true, silent = true })
--- vim.keymap.set("n", "<leader>q", ":lua handle_quit()", opts)
+keymap("n", "<S-l>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Go to tab on the right" })
+keymap("n", "<S-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc = "Go to tab on the left" })
 
 keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
@@ -112,9 +91,9 @@ vim.keymap.set("x", "<leader>lr", function()
 
 	local change_escape = utils.jasmine_escape(change)
 	vim.cmd("!find .  -type f | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
-end, { desc = "selected" })
+end, { desc = "Mass rename of string" })
 
-keymap("n", "gs", ":%sm/", opts)
+vim.keymap.set("n", "gs", ":%sm/", { noremap = true, silent = true, desc = "Highlight words under cursor" })
 -- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
