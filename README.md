@@ -15,6 +15,6 @@ chezmoi init git@github.com:badumbatish/dotfiles.git && chezmoi update
 chezmoi add ~/.gitconfig ~/.config/nvim ~/.zshrc ~/.local/bin/sesh  
 ```
 
+## Afterward
 
-
-
+If you're on ubuntu, then install alacritty so you can copy  and paste
