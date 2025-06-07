@@ -1,6 +1,6 @@
 local utils = require("utils")
 function string:contains(sub)
-	return self:find(sub, 1, true) ~= nil
+    return self:find(sub, 1, true) ~= nil
 end
 
 local opts = { noremap = true, silent = true }
@@ -32,70 +32,76 @@ keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>", {}) -- Go to implementation
 
 local function get_matching_file(extensions, file_type)
-	local filename = vim.api.nvim_buf_get_name(0)
-	local old_filename = filename
-	local basename = vim.fn.fnamemodify(filename, ":t:r") -- filename without extension
+    local filename = vim.api.nvim_buf_get_name(0)
+    local old_filename = filename
+    local basename = vim.fn.fnamemodify(filename, ":t:r") -- filename without extension
 
-	-- Build regex pattern from extensions array
-	local pattern = table.concat(extensions, "|")
-	local cmd = "fd --type f --regex '" .. basename .. "\\.(" .. pattern .. ")' ."
-	vim.print(cmd)
-	local handle = io.popen(cmd)
+    -- Build regex pattern from extensions array
+    local pattern = table.concat(extensions, "|")
+    local cmd = "fd --type f --regex '" .. basename .. "\\.(" .. pattern .. ")' ."
+    vim.print(cmd)
+    local handle = io.popen(cmd)
 
-	if not handle then
-		print("Failed to run search command for " .. file_type .. ".")
-		return
-	end
+    if not handle then
+        print("Failed to run search command for " .. file_type .. ".")
+        return
+    end
 
-	local result = handle:read("*a")
-	handle:close()
+    local result = handle:read("*a")
+    handle:close()
 
-	local files = {}
-	for line in result:gmatch("[^\r\n]+") do
-		if line:match("%." .. basename .. "%.") == nil then
-			table.insert(files, line)
-		end
-	end
+    local files = {}
+    for line in result:gmatch("[^\r\n]+") do
+        if line:match("%." .. basename .. "%.") == nil then
+            table.insert(files, line)
+        end
+    end
 
-	if #files == 0 then
-		print("No corresponding " .. file_type .. " file found for " .. basename)
-		return
-	end
+    if #files == 0 then
+        print("No corresponding " .. file_type .. " file found for " .. basename)
+        return
+    end
 
-	return { old_filename, files[1] }
+    return { old_filename, files[1] }
 end
 
 
 vim.keymap.set("n", "<leader>c", function()
-	local curr_and_match = get_matching_file({ "cpp", "cc", "cxx" }, ".cpp/.cc/.cxx")
-	if curr_and_match == nil then return end
-	vim.cmd("e " .. curr_and_match[2])
-	vim.cmd("vsplit " .. curr_and_match[1])
+    local curr_and_match = get_matching_file({ "cpp", "cc", "cxx" }, ".cpp/.cc/.cxx")
+    if curr_and_match == nil then return end
+    vim.cmd("e " .. curr_and_match[2])
+    vim.cmd("vsplit " .. curr_and_match[1])
 end, { desc = "Open matching .cpp file in vertical split" })
 
 vim.keymap.set("n", "<leader>h", function()
-	local curr_and_match = get_matching_file({ "h", "hpp", "hxx" }, ".h/.hpp/.hxx")
+    local curr_and_match = get_matching_file({ "h", "hpp", "hxx" }, ".h/.hpp/.hxx")
 
-	if curr_and_match == nil then return end
-	vim.cmd("e " .. curr_and_match[1])
-	vim.cmd("vsplit " .. curr_and_match[2])
+    if curr_and_match == nil then return end
+    vim.cmd("e " .. curr_and_match[1])
+    vim.cmd("vsplit " .. curr_and_match[2])
 end, { desc = "Open matching .header file in vertical split" })
 
 vim.keymap.set("x", "<leader>lr", function()
-	local selected = utils.extract_vis_text()
-	vim.print("Selected text : " .. selected)
+    local selected = utils.extract_vis_text()
+    vim.print("Selected text : " .. selected)
 
-	local selected_escaped = utils.jasmine_escape(selected)
-	vim.print("escaped text : " .. selected_escaped)
+    local selected_escaped = utils.jasmine_escape(selected)
+    vim.print("escaped text : " .. selected_escaped)
 
-	local change = vim.fn.input({ prompt = "Mass change: ", default = selected })
+    local change = vim.fn.input({ prompt = "Mass change: ", default = selected })
 
-	vim.print("change: " .. change)
+    vim.print("change: " .. change)
 
-	local change_escape = utils.jasmine_escape(change)
-	vim.cmd("!fd  --type f . | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
+    local change_escape = utils.jasmine_escape(change)
+    vim.cmd("!fd  --type f . | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
 end, { desc = "Mass rename of string" })
 
+vim.keymap.set("n", "cp", function()
+    local next = vim.fn.search("(")
+    if next ~= 0 then
+        vim.api.nvim_feedkeys("lcw", "n", true)
+    end
+end)
 vim.keymap.set("n", "gs", ":%sm/", { noremap = true, silent = true, desc = "Highlight words under cursor" })
 -- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
