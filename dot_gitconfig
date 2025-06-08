@@ -8,6 +8,7 @@
      
     sts = status 
     co = checkout
+    cb = co -b
     commit-with-prefix = "!f() { \
         prefix=$1; \
         shift; \
@@ -19,7 +20,6 @@
         fi; \
         git commit -m \"$prefix: $description\"; \
     }; f"
-    c = "!f() { if [ $(basename $(pwd)) = 'gccrs' ]; then git gcc-commit-mklog -s; else git commit; fi; }; f"
 
     aoe = "!git commit --amend --no-edit"
     fix = "!git commit-with-prefix FIX"

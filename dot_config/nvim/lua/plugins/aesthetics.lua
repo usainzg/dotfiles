@@ -43,6 +43,8 @@ return {
                 transparent_background = true, -- disables setting the background color.
 
             })
+	    --- latte for light
+	    --- mocha for dark
             vim.cmd.colorscheme "catppuccin-mocha"
         end
     },

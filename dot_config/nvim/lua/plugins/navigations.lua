@@ -44,8 +44,6 @@ return {
                 vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = "Telescope resume last search history" })
                 vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls,
                     { desc = "Telescope search incoming call " })
-                vim.keymap.set('n', '<leader>ft', builtin.lsp_type_definitions,
-                    { desc = "Telescope type def" })
                 vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls,
                     { desc = "Telescope search incoming call " })
                 vim.keymap.set('n', '<leader>fm', builtin.man_pages, { desc = "Telescope resume last search history" })
