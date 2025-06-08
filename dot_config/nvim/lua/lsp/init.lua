@@ -37,8 +37,8 @@ vim.keymap.set("n", "<leader>h", function()
 end, { desc = "Open matching .header file in vertical split" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to implementation" })
-vim.keymap.set("n", "lD", vim.diagnostic.goto_prev,
+vim.keymap.set("n", "<leader>lD", vim.diagnostic.goto_prev,
     { noremap = true, silent = true, desc = "Go to previous diagnostics error" })
 
-vim.keymap.set("n", "ld", vim.diagnostic.goto_next,
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.goto_next,
     { noremap = true, silent = true, desc = "Go to next diagnostics error" })
