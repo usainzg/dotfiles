@@ -29,57 +29,8 @@ keymap("n", "<S-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc =
 
 keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
-vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>", {}) -- Go to implementation
-
-local function get_matching_file(extensions, file_type)
-    local filename = vim.api.nvim_buf_get_name(0)
-    local old_filename = filename
-    local basename = vim.fn.fnamemodify(filename, ":t:r") -- filename without extension
-
-    -- Build regex pattern from extensions array
-    local pattern = table.concat(extensions, "|")
-    local cmd = "fd --type f --regex '" .. basename .. "\\.(" .. pattern .. ")' ."
-    vim.print(cmd)
-    local handle = io.popen(cmd)
-
-    if not handle then
-        print("Failed to run search command for " .. file_type .. ".")
-        return
-    end
-
-    local result = handle:read("*a")
-    handle:close()
-
-    local files = {}
-    for line in result:gmatch("[^\r\n]+") do
-        if line:match("%." .. basename .. "%.") == nil then
-            table.insert(files, line)
-        end
-    end
-
-    if #files == 0 then
-        print("No corresponding " .. file_type .. " file found for " .. basename)
-        return
-    end
-
-    return { old_filename, files[1] }
-end
 
 
-vim.keymap.set("n", "<leader>c", function()
-    local curr_and_match = get_matching_file({ "cpp", "cc", "cxx" }, ".cpp/.cc/.cxx")
-    if curr_and_match == nil then return end
-    vim.cmd("e " .. curr_and_match[2])
-    vim.cmd("vsplit " .. curr_and_match[1])
-end, { desc = "Open matching .cpp file in vertical split" })
-
-vim.keymap.set("n", "<leader>h", function()
-    local curr_and_match = get_matching_file({ "h", "hpp", "hxx" }, ".h/.hpp/.hxx")
-
-    if curr_and_match == nil then return end
-    vim.cmd("e " .. curr_and_match[1])
-    vim.cmd("vsplit " .. curr_and_match[2])
-end, { desc = "Open matching .header file in vertical split" })
 
 vim.keymap.set("x", "<leader>lr", function()
     local selected = utils.extract_vis_text()

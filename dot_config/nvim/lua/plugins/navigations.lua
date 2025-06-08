@@ -51,10 +51,6 @@ return {
 
 
 				-- SET UP KEYMAP FOR LSP, POTENTIALLY VIA TELESCOPE
-				vim.keymap.set("n", "<leader>la", ":lua vim.lsp.buf.code_action()<CR>",
-					{ desc = "Code actions" })
-				vim.keymap.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<CR>",
-					{ desc = "Rename word under cursor" })
 				-- vim.keymap.set("n", "<leader>ldf", ":lua vim.lsp.buf.definition()<CR>")
 				-- vim.keymap.set("n", "<leader>ldc", ":lua vim.lsp.buf.declaration()<CR>") -- Go to declaration
 				-- vim.keymap.set("n" "<leader>i", ":lua vim.lsp.buf.incoming_calls()<CR>", {}) -- Show incoming calls to the function under the cursor

@@ -33,5 +33,26 @@ return {
         opts = {
             -- configurations go here
         },
+    },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                transparent_background = true, -- disables setting the background color.
+
+            })
+            vim.cmd.colorscheme "catppuccin-mocha"
+        end
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
     }
 }
