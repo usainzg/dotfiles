@@ -43,8 +43,8 @@ return {
                 transparent_background = true, -- disables setting the background color.
 
             })
-	    --- latte for light
-	    --- mocha for dark
+            --- latte for light
+            --- mocha for dark
             vim.cmd.colorscheme "catppuccin-mocha"
         end
     },
@@ -56,5 +56,9 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
+    },
+
+    {
+        "HiPhish/rainbow-delimiters.nvim",
     }
 }

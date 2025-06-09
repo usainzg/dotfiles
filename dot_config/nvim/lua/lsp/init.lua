@@ -7,6 +7,9 @@ for _, name in ipairs({ "lua_ls", "pyright", "clangd" }) do
 end
 
 
+vim.lsp.enable("clangd")
+vim.lsp.enable('ocamllsp')
+
 vim.lsp.enable('rust_analyzer')
 
 

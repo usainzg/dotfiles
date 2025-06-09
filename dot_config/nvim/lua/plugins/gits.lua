@@ -62,7 +62,7 @@ return {
                         vim.keymap.set(mode, l, r, opts)
                     end
                     map('n', 'gb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-                    map('n', '<leader>d', function() gitsigns.diffthis('~') end)
+                    -- map('n', '<leader>d', function() gitsigns.diffthis('~') end)
                 end
             }
         end,
