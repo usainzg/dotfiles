@@ -20,7 +20,7 @@ vim.opt.signcolumn     = "yes:2"
 
 vim.opt.laststatus     = 3
 
-vim.opt.spell          = true
+vim.opt.spell          = false 
 
 vim.opt.termguicolors  = true
 vim.opt.syntax         = "on"
