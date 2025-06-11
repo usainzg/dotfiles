@@ -5,6 +5,6 @@ return {
     -- dev = { true },
     -- @t
     config = function()
-        require("EasyEdit")
+        -- require("EasyEdit")
     end
 }

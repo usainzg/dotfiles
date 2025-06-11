@@ -44,7 +44,7 @@ vim.keymap.set("x", "<leader>lr", function()
     vim.print("change: " .. change)
 
     local change_escape = utils.jasmine_escape(change)
-    vim.cmd("!fd  --type f . | xargs sed -i 's/" .. selected_escaped .. "/" .. change_escape .. "/g'")
+    vim.cmd("!fd  --type f . | xargs sd " .. "\"" .. selected_escaped .. "\" \"" .. change_escape .. "\"")
 end, { desc = "Mass rename of string" })
 
 vim.keymap.set("n", "cp", function()
