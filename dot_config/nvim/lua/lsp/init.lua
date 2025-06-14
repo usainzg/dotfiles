@@ -28,8 +28,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --- KEY MAPS
 
 vim.keymap.set("n", "<leader>c", function()
-    vim.cmd("LspClangdSwitchSourceHeader")
     vim.cmd("vsplit")
+    vim.cmd("LspClangdSwitchSourceHeader")
 end, { desc = "Open matching .cpp file in vertical split" })
 
 vim.keymap.set("n", "<leader>h", function()
