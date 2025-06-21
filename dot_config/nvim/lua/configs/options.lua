@@ -20,7 +20,7 @@ vim.opt.signcolumn     = "yes:2"
 
 vim.opt.laststatus     = 3
 
-vim.opt.spell          = false 
+vim.opt.spell          = false
 
 vim.opt.termguicolors  = true
 vim.opt.syntax         = "on"
@@ -75,3 +75,4 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
         vim.cmd.nohlsearch()
     end),
 })
+
