@@ -17,6 +17,7 @@ return
             keymaps = {
                 ["-"] = { "actions.parent", mode = "n" },
                 ["h"] = { "actions.parent", mode = "n" },
+                ["<CR>"] = { "actions.select", opts = { tab = true } },
                 ["l"] = "actions.select",
             },
         })
