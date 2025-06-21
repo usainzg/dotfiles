@@ -5,7 +5,7 @@ if [[ $# -eq 1 ]]; then
 else
     selected=$(
         (
-            find ~/Developer/github ~/projects -mindepth 1 -maxdepth 1 -type d
+            find ~/Developer/github ~/Developer/igalia ~/projects  -mindepth 1 -maxdepth 1 -type d
             find ~/Developer/nvim_proj ~/projects -mindepth 1 -maxdepth 1 -type d
             find ~/.config/nvim -maxdepth 0 -type d
         ) | fzf
@@ -27,25 +27,17 @@ fi
 
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -d -s $selected_name -c $selected
-
-    tmux new-window -c $selected -n "terminal_${selected_name}"
-    #
-    # Split the window vertically (main pane on left)
-    tmux split-window -h -c $selected -l 33%
-
-    # Split the right pane horizontally
-    tmux split-window -v -c $selected
-    # Select the main (left) pane
-    tmux select-pane -t 0
-
-    tmux select-window -t 0
-    tmux send-keys -t 0 'neofetch' C-m
-    tmux send-keys -t 1.0 'git status' C-j
-    tmux send-keys -t 1.1 'ls' C-j
-
+    tmux split-window -h -c $selected -l 33% -t $selected_name
+    tmux split-window -v -c $selected -t $selected_name
+    tmux select-pane -t $selected_name:0.0
+    tmux send-keys -t $selected_name:0.0 'neofetch' C-m
+    tmux send-keys -t $selected_name:0.1 'git status' C-m  
+    tmux send-keys -t $selected_name:0.2 'ls' C-m
 fi
 
-if [[ -z $TMUX ]]; then
+
+# Check if we have active clients when inside tmux
+if [[ -z $TMUX ]] || [[ -z "$(tmux list-clients)" ]]; then
     tmux attach-session -t $selected_name
 else
     tmux switch-client -t $selected_name

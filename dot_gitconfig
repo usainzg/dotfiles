@@ -2,7 +2,8 @@
 # Please adapt and uncomment the following lines:
 [user]
 	name = badumbatish
-	email = tanghocle456@gmail.com
+	email = jjasmine@igalia.com 
+	# email = tanghocle456@gmail.com
 [alias]
     lg = log --name-status --graph --color --pretty=format:'%Cred%h%Creset - %Cred%H%Creset  - %Cgreen%as%Creset - %C(yellow)%d%Creset %+C(bold blue)%an%Creset - %Cgreen%s%Creset '
      

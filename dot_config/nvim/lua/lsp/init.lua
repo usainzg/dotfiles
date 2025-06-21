@@ -27,15 +27,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 --- KEY MAPS
 
+vim.keymap.set("n", "<leader>h", function()
+    vim.cmd("set nosplitright")
+    vim.cmd("vsplit")
+    vim.cmd("LspClangdSwitchSourceHeader")
+    vim.cmd("set splitright")
+end, { desc = "Open matching header file in current buffer" })
+
 vim.keymap.set("n", "<leader>c", function()
     vim.cmd("vsplit")
     vim.cmd("LspClangdSwitchSourceHeader")
-end, { desc = "Open matching .cpp file in vertical split" })
-
-vim.keymap.set("n", "<leader>h", function()
-    vim.cmd("vsplit")
-    vim.cmd("LspClangdSwitchSourceHeader")
-end, { desc = "Open matching .header file in vertical split" })
+end, { desc = "Open matching source file in current buffer" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to implementation" })
 vim.keymap.set("n", "<leader>lD", vim.diagnostic.goto_prev,
