@@ -14,6 +14,12 @@ return
 
     config = function()
         require("oil").setup({
+            columns = {
+                "icon",
+                -- "permissions",
+                -- "size",
+                -- "mtime",
+            },
             keymaps = {
                 ["-"] = { "actions.parent", mode = "n" },
                 ["h"] = { "actions.parent", mode = "n" },
