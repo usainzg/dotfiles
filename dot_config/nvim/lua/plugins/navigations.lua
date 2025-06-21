@@ -17,21 +17,31 @@ return {
             },
 
             config = function()
+                require('telescope').setup {
+                    defaults = {
+                        cache_picker = {
+                            num_pickers = 20
+                        }, extensions = {
+                        fzf = {
+                            fuzzy = true,                   -- false will only do exact matching
+                            override_generic_sorter = true, -- override the generic sorter
+                            override_file_sorter = true,    -- override the file sorter
+                            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+                            -- the default case_mode is "smart_case"
+                        }
+                    }
+                        -- Default configuration for telescope goes here:
+                        -- config_key = value,
+                        -- ..
+                    }, }
+
+
                 require('telescope').load_extension('fzf')
                 require('telescope').load_extension('live_grep_args')
                 require("telescope").load_extension "frecency"
                 local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
                 local builtin = require('telescope.builtin')
 
-                require('telescope').setup {
-                    defaults = {
-                        cache_picker = {
-                            num_pickers = 20
-                        }
-                        -- Default configuration for telescope goes here:
-                        -- config_key = value,
-                        -- ..
-                    }, }
 
 
                 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })

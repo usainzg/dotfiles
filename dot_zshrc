@@ -108,6 +108,17 @@ function activate_venv() {
     if [ -d "./venv" ]; then
         source ./venv/bin/activate
     fi
+    if [ -d "./.venv" ]; then
+        source ./.venv/bin/activate
+    fi
+}
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
 
 
@@ -120,8 +131,6 @@ export PATH=~/.local/bin:$PATH
 
 autoload -Uz compinit && compinit
 # source <(fzf --zsh)
-eval "$(atuin init zsh)"
-eval "$(starship init zsh)"
 
 
 
@@ -132,3 +141,7 @@ eval "$(starship init zsh)"
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/thisisjjasmime/.opam/opam-init/init.zsh' ]] || source '/home/thisisjjasmime/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+#
+#
+eval "$(atuin init zsh)"
+eval "$(starship init zsh)"

@@ -61,8 +61,9 @@ end
 ---@field offsetEncoding? string
 
 return {
-    cmd = { 'clangd',
-        '--j=6', '--background-index', '--pch-storage=memory' },
+    cmd = {
+        '/Users/jjasmine/Developer/igalia/llvm-project/build_tools/bin/clangd',
+        '--j=3', '--background-index', '--pch-storage=memory' },
     filetypes = { '.', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     root_markers = {
         '.clangd',

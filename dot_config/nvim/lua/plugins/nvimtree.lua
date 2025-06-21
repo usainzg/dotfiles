@@ -45,7 +45,10 @@ return {
             --         open = true,
             --     }
             -- },
-
+            git = {
+                enable = true,
+                timeout = 500 -- (in ms)
+            },
             on_attach = my_on_attach
         }
         require 'nvim-web-devicons'.setup {
