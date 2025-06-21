@@ -145,3 +145,5 @@ autoload -Uz compinit && compinit
 #
 eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
+
+. "$HOME/.atuin/bin/env"

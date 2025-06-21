@@ -16,7 +16,7 @@ pushd . > /dev/null
 
 cd ~/.local/share/chezmoi/
 git add .
-git commit -m "Automatic update via ~/.local/bin/add"
+git commit -m "Automatic update via ~/.local/bin/cadd"
 
 popd > /dev/null
 
