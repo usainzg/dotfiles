@@ -75,4 +75,3 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
         vim.cmd.nohlsearch()
     end),
 })
-

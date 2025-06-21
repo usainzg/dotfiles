@@ -14,6 +14,13 @@ return {
             require('lualine').setup {
                 options = {
                     theme = 'ayu',
+                },
+                sections = {
+
+                    lualine_a = {
+                        'mode', 'branch' },
+                    lualine_b = { 'lsp_status'
+                    }
                 }
             }
         end
