@@ -1,3 +1,5 @@
+# INFO: cadd STANDS FOR CHEZMOI ADDING ALL RELATED FILE
+#
 # Add zsh gitconfig
 chezmoi add ~/.zshrc ~/.gitconfig
 
@@ -9,7 +11,7 @@ chezmoi add ~/.config/nvim
 chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
 
 # Add executable
-chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall
+chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush
 
 
 pushd . > /dev/null
