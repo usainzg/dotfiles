@@ -48,3 +48,8 @@
 
 [merge]
     conflictstyle = zdiff3
+
+
+
+[feature]
+    manyFiles = true    

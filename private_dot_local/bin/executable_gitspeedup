@@ -1,0 +1,5 @@
+git config feature.manyFiles true
+git update-index --index-version 4
+git config core.fsmonitor true
+git fsmonitor--daemon status
+git config core.untrackedcache true

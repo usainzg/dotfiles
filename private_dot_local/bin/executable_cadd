@@ -7,13 +7,16 @@ chezmoi add ~/.zshrc ~/.gitconfig
 rm -rf ~/.local/share/chezmoi/dot_config/nvim/
 chezmoi add ~/.config/nvim
 
-# Add kitty
+# INFO: Kitty
 chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
 
-# Add executable
-chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush
+# INFO: Executable
+chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush ~/.local/bin/gitspeedup
 
 
+
+
+# INFO: COMMIT ALL ADDs
 pushd . > /dev/null
 
 cd ~/.local/share/chezmoi/
