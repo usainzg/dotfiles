@@ -1,6 +1,8 @@
 # Instlal general packages
-brew install starship fzf curl nodejs npm python3 git kitty
+brew install starship fzf curl nodejs npm python3 git kitty 
 
+# Install yazi
+brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
 
 # Install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
