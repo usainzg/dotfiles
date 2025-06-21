@@ -1,0 +1,21 @@
+# Add zsh gitconfig
+chezmoi add ~/.zshrc ~/.gitconfig
+
+rm -rf ~/.local/share/chezmoi/dot_config/nvim/
+chezmoi add ~/.config/nvim
+
+# Add kitty
+chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
+
+# Add executable
+chezmoi add ~/.local/bin/chezmoi_add ~/.local/bin/sesh  ~/.local/bin/chezmoi_install
+
+
+pushd . > /dev/null
+
+cd ~/.local/share/chezmoi/
+git add .
+git commit -m "Automatic update via ~/.local/bin/chezmoi_add"
+
+popd > /dev/null
+
