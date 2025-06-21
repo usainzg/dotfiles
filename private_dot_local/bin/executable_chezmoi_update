@@ -3,3 +3,6 @@ chezmoi add ~/.zshrc ~/.gitconfig ~/.config/nvim
 
 # Add kitty
 chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
+
+# Add executable
+chezmoi add ~/.local/bin/chezmoi_update ~/.local/bin/sesh 
