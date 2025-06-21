@@ -26,13 +26,22 @@ if [[ -z $tmux_running ]]; then
 fi
 
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
-    tmux new-session -d -s $selected_name -c $selected
-    tmux split-window -h -c $selected -l 33% -t $selected_name
-    tmux split-window -v -c $selected -t $selected_name
-    tmux select-pane -t $selected_name:0.0
-    tmux send-keys -t $selected_name:0.0 'neofetch' C-m
-    tmux send-keys -t $selected_name:0.1 'git status' C-m  
-    tmux send-keys -t $selected_name:0.2 'ls' C-m
+   tmux new-session -d -s $selected_name -c $selected
+
+    tmux new-window -c $selected -n "terminal_${selected_name}"
+    #
+    # Split the window vertically (main pane on left)
+    tmux split-window -h -c $selected -l 33%
+
+    # Split the right pane horizontally
+    tmux split-window -v -c $selected
+    # Select the main (left) pane
+    tmux select-pane -t 0
+
+    tmux select-window -t 0
+    tmux send-keys -t 0 'neofetch' C-m
+    tmux send-keys -t 1.0 'git status' C-j
+    tmux send-keys -t 1.1 'ls' C-j
 fi
 
 
