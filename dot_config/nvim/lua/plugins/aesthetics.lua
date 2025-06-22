@@ -54,20 +54,26 @@ return {
             -- vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
         end
     },
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            -- require("catppuccin").setup({
-            --     transparent_background = true, -- disables setting the background color.
-            --
-            -- })
-            -- --- latte for light
-            -- --- mocha for dark
-            -- vim.cmd.colorscheme "catppuccin-mocha"
-        end
-    },
+    -- {
+    --     "catppuccin/nvim",
+    --     name = "catppuccin",
+    --     priority = 1000,
+    --     config = function()
+    --         require("catppuccin").setup({
+    --             -- transparent_background = true, -- disables setting the background color.
+    --             custom_highlights = function(colors)
+    --                 return {
+    --                     TabLineSel = { bg = colors.sky },
+    --                     CmpBorder = { fg = colors.surface2 },
+    --                 }
+    --             end
+    --
+    --         })
+    --         --- latte for light
+    --         --- mocha for dark
+    --         vim.cmd.colorscheme "catppuccin-latte"
+    --     end
+    -- },
     {
         "Shatur/neovim-ayu",
         priority = 1000,
