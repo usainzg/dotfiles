@@ -82,6 +82,19 @@ return {
         },
         offsetEncoding = { 'utf-8', 'utf-16' },
     },
+    settings = {
+        clangd = {
+            InlayHints = {
+                BlockEnd = true,
+                DefaultArguments = false,
+                Designators = true,
+                Enabled = true,
+                ParameterNames = true,
+                DeducedTypes = true,
+            },
+            fallbackFlags = { "-std=c++20" },
+        },
+    },
     ---@param client vim.lsp.Client
     ---@param init_result ClangdInitializeResult
     on_init = function(client, init_result)
