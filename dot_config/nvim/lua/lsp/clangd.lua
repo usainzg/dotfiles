@@ -62,7 +62,7 @@ end
 
 return {
     cmd = {
-        '/Users/jjasmine/Developer/igalia/llvm-project/build_tools/bin/clangd',
+        '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/clangd',
         '--j=3', '--background-index', '--pch-storage=memory' },
     filetypes = { '.', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     root_markers = {
