@@ -1,69 +1,43 @@
 return {
     {
-        -- TELESCOPE
+        -- FZF-LUA
 
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         {
-            "nvim-telescope/telescope-frecency.nvim",
-            -- install the latest stable version
-            version = "*",
-        },
-        {
-            'nvim-telescope/telescope.nvim',
-            tag = '0.1.8',
-            -- or                              , branch = '0.1.x',
-            dependencies = { 'nvim-lua/plenary.nvim',
-                "nvim-telescope/telescope-live-grep-args.nvim",
-            },
+            "ibhagwan/fzf-lua",
 
+            dependencies = { "nvim-tree/nvim-web-devicons" },
             config = function()
-                require('telescope').setup {
-                    defaults = {
-                        cache_picker = {
-                            num_pickers = 20
-                        }, extensions = {
-                        fzf = {
-                            fuzzy = true,                   -- false will only do exact matching
-                            override_generic_sorter = true, -- override the generic sorter
-                            override_file_sorter = true,    -- override the file sorter
-                            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                            -- the default case_mode is "smart_case"
-                        }
-                    }
-                        -- Default configuration for telescope goes here:
-                        -- config_key = value,
-                        -- ..
-                    }, }
+                require('fzf-lua').setup({ 'telescope', "hide", })
+                local fzf_lua = require("fzf-lua")
 
-
-                require('telescope').load_extension('fzf')
-                require('telescope').load_extension('live_grep_args')
-                require("telescope").load_extension "frecency"
-                local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-                local builtin = require('telescope.builtin')
-
-
-
-                vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+                vim.keymap.set('n', '<leader>ff', fzf_lua.files, { desc = "Find files" })
                 vim.keymap.set("n", "<leader>fg",
-                    ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = "Find words" })
-                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffers" })
-                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags" })
-                vim.keymap.set('n', '/', builtin.current_buffer_fuzzy_find, { desc = "Find in current buffer" })
+                    fzf_lua.live_grep_native, { desc = "Find words" })
+                vim.keymap.set('n', '<leader>fb', fzf_lua.grep, { desc = "Find buffers" })
+                vim.keymap.set('n', '<leader>fh', fzf_lua.help_tags, { desc = "Find help tags" })
+                vim.keymap.set('n', '/', fzf_lua.lgrep_curbuf, { desc = "Find in current buffer" })
 
-                vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = "Telescope resume last search history" })
-                vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls,
-                    { desc = "Telescope search incoming call " })
-                vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls,
-                    { desc = "Telescope search incoming call " })
-                vim.keymap.set('n', '<leader>fm', builtin.man_pages, { desc = "Telescope resume last search history" })
-                vim.keymap.set('n', '<leader>fp', builtin.pickers, { desc = "Telescope search history" })
-                vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Telescope search diagnostics" })
+                vim.keymap.set('n', '<leader>fr', fzf_lua.resume, { desc = "fzf-lua resume last search history" })
+                vim.keymap.set('n', '<leader>fi', fzf_lua.lsp_incoming_calls,
+                    { desc = "fzf-lua search incoming call " })
+                vim.keymap.set('n', '<leader>fo', fzf_lua.lsp_outgoing_calls,
+                    { desc = "fzf-lua search incoming call " })
+                vim.keymap.set('n', '<leader>fm', fzf_lua.man_pages, { desc = "fzf-lua resume last search history" })
+                vim.keymap.set('n', '<leader>fp', fzf_lua.search_history, { desc = "fzf-lua search history" })
+                vim.keymap.set('n', '<leader>fd', fzf_lua.lsp_finder, { desc = "LSP search diagnostics" })
 
-                vim.keymap.set("n", "<leader>g", live_grep_args_shortcuts.grep_word_under_cursor,
+                vim.keymap.set("n", "<leader>gw", fzf_lua.grep_cword,
                     { desc = "Ripgrep under cursor" })
-                vim.keymap.set("x", "<leader>g", live_grep_args_shortcuts.grep_visual_selection,
+
+                vim.keymap.set("n", "<leader>gr", fzf_lua.lsp_references,
+                    { desc = "LSP references via fzf-lua" })
+                vim.keymap.set("x", "<leader>g", fzf_lua.grep_visual,
                     { desc = "Ripgrep selection" })
+
+
+
+                vim.keymap.set("n", "<leader>la", fzf_lua.lsp_code_actions,
+                    { noremap = true, silent = true, desc = "Code action" })
 
 
                 -- SET UP KEYMAP FOR LSP, POTENTIALLY VIA TELESCOPE

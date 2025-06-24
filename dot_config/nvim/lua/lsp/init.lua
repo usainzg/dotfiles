@@ -10,6 +10,8 @@ end
 vim.lsp.enable("clangd")
 vim.lsp.enable('ocamllsp')
 
+vim.lsp.set_log_level(5)
+
 vim.lsp.enable('rust_analyzer')
 
 
@@ -45,10 +47,6 @@ vim.keymap.set("n", "<leader>lD", vim.diagnostic.goto_prev,
 
 vim.keymap.set("n", "<leader>ld", vim.diagnostic.goto_next,
     { noremap = true, silent = true, desc = "Go to next diagnostics error" })
-
-
-vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
-    { noremap = true, silent = true, desc = "Code action" })
 
 
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
