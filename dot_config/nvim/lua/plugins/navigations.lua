@@ -13,7 +13,7 @@ return {
                 vim.keymap.set('n', '<leader>ff', fzf_lua.files, { desc = "Find files" })
                 vim.keymap.set("n", "<leader>fg",
                     fzf_lua.live_grep_native, { desc = "Find words" })
-                vim.keymap.set('n', '<leader>fb', fzf_lua.grep, { desc = "Find buffers" })
+                vim.keymap.set('n', '<leader>fb', fzf_lua.oldfiles, { desc = "Find buffers" })
                 vim.keymap.set('n', '<leader>fh', fzf_lua.help_tags, { desc = "Find help tags" })
                 vim.keymap.set('n', '/', fzf_lua.lgrep_curbuf, { desc = "Find in current buffer" })
 
