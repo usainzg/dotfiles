@@ -1,4 +1,4 @@
-for _, name in ipairs({ "lua_ls", "pyright", "clangd" }) do
+for _, name in ipairs({ "lua_ls", "pyright", "clangd", "tblgen-lsp-server" }) do
     local ok, config = pcall(require, "lsp." .. name)
     if ok then
         vim.lsp.config(name, config)
