@@ -1,7 +1,7 @@
 # Instlal general packages
 brew install starship fzf curl nodejs npm python3 git kitty bat nvim tmux neofetch
 
-brew install ccache cmake
+brew install ccache cmake lld
 # Install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
