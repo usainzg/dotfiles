@@ -1,5 +1,5 @@
 # Instlal general packages
-brew install starship fzf curl nodejs npm python3 git kitty bat
+brew install starship fzf curl nodejs npm python3 git kitty bat nvim
 
 
 # Install omzsh

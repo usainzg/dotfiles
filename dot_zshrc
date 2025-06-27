@@ -3,6 +3,9 @@
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH=/opt/homebrew/bin:$PATH
+
+export PATH=~/.local/bin/:$PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -85,11 +88,11 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -103,40 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-function activate_venv() {
-    if [ -d "./venv" ]; then
-        source ./venv/bin/activate
-    fi
-    if [ -d "./.venv" ]; then
-        source ./.venv/bin/activate
-    fi
-}
-
-
-
-activate_venv
-export VCPKG_ROOT=$HOME/vcpkg
-export PATH=$VCPKG_ROOT:$PATH
-export EDITOR="nvim"
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=~/.local/bin:$PATH
-
-autoload -Uz compinit && compinit
-# source <(fzf --zsh)
-
-
-
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '/home/thisisjjasmime/.opam/opam-init/init.zsh' ]] || source '/home/thisisjjasmime/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
-#
-#
-eval "$(atuin init zsh)"
-eval "$(starship init zsh)"
-
 . "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
