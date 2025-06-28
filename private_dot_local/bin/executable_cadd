@@ -10,6 +10,11 @@ chezmoi add ~/.tmux.conf
 rm -rf ~/.local/share/chezmoi/dot_config/nvim/
 chezmoi add ~/.config/nvim
 
+# INFO: Yabai and skchd
+chezmoi add ~/.config/yabai/yabairc
+chezmoi add ~/.config/skhd/skhdrc
+
+
 # INFO: Kitty
 chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
 

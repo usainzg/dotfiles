@@ -28,6 +28,7 @@ keymap("n", "<S-l>", ":tabnext<CR>", { noremap = true, silent = true, desc = "Go
 keymap("n", "<S-h>", ":tabprevious<CR>", { noremap = true, silent = true, desc = "Go to tab on the left" })
 
 keymap("n", "<leader>s", ":w<CR>", opts)
+keymap("n", "zz", ":qa!<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 
 
