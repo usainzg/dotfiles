@@ -8,7 +8,7 @@
     path = ~/.gitconfig-work
 [alias]
     lg = log --name-status --graph --color --pretty=format:'%Cred%h%Creset - %Cred%H%Creset  - %Cgreen%as%Creset - %C(yellow)%d%Creset %+C(bold blue)%an%Creset - %Cgreen%s%Creset '
-     
+    br = branch 
     sts = status 
     co = checkout
     cb = co -b
