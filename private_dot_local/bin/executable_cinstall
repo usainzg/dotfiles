@@ -1,8 +1,13 @@
-# Instlal general packages
+# INFO: Install general packages
 brew install starship fzf curl nodejs npm python3 git kitty bat nvim tmux neofetch
 
+# INFO: C++ Dev
 brew install ccache cmake lld
-# Install omzsh
+
+# INFO: Window manager:
+brew install yabai skhd
+
+# INFO: Install omzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Install atuin
