@@ -1,9 +1,11 @@
 # This is Git's per-user configuration file.
 # Please adapt and uncomment the following lines:
+
 [user]
-	name = badumbatish
-	email = jjasmine@igalia.com 
-	# email = tanghocle456@gmail.com
+    name = badumbatish
+    email = tanghocle456@gmail.com
+[includeIf "gitdir:**/igalia/**"]
+    path = ~/.gitconfig-work
 [alias]
     lg = log --name-status --graph --color --pretty=format:'%Cred%h%Creset - %Cred%H%Creset  - %Cgreen%as%Creset - %C(yellow)%d%Creset %+C(bold blue)%an%Creset - %Cgreen%s%Creset '
      
