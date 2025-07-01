@@ -7,7 +7,6 @@ chezmoi add ~/.zshrc ~/.gitconfig
 chezmoi add ~/.tmux.conf
 
 # INFO: Neovim config
-rm -rf ~/.local/share/chezmoi/dot_config/nvim/
 chezmoi add ~/.config/nvim
 
 # INFO: Yabai and skchd
