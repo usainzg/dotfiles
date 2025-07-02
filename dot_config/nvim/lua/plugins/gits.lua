@@ -35,12 +35,12 @@ return {
                 current_line_blame           = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
                 current_line_blame_opts      = {
                     virt_text = true,
-                    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-                    delay = 1000,
+                    virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
+                    delay = 500,
                     ignore_whitespace = false,
                     virt_text_priority = 100,
                 },
-                current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
+                current_line_blame_formatter = '<summary> - <author>, <author_time:%R>',
                 sign_priority                = 6,
                 update_debounce              = 100,
                 status_formatter             = nil,   -- Use default
@@ -61,8 +61,8 @@ return {
                         opts.buffer = bufnr
                         vim.keymap.set(mode, l, r, opts)
                     end
-                    map('n', 'gb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-                    -- map('n', '<leader>d', function() gitsigns.diffthis('~') end)
+                    vim.keymap.set('n', '<leader>yh', "<cmd> GitBlameCopySHA<CR>")
+                    map('n', 'gb', '<cmd> Gitsigns blame<CR>')
                 end
             }
         end,
@@ -81,8 +81,8 @@ return {
             -- for example
             enabled = true, -- if you want to enable the plugin
             message_template = " <summary> • <date> • <author> • <<sha>>", -- template for the blame message, check the Message template section for more options
-            date_format = "%m-%d-%Y %H:%M:%S", -- template for the date, check Date format section for more options
-            virtual_text_column = 1, -- virtual text start column, check Start virtual text at column section for more options
+            date_format = "%m-%d-%Y", -- template for the date, check Date format section for more options
+            virtual_text_column = 0, -- virtual text start column, check Start virtual text at column section for more options
         },
 
         vim.keymap.set('n', '<leader>yh', "<cmd> GitBlameCopySHA<CR>")
