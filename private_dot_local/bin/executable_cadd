@@ -30,6 +30,6 @@ pushd . > /dev/null
 cd ~/.local/share/chezmoi/
 git add .
 git status -v
-git commit -m "$(echo 'Automatic update via ~/.local/bin/cadd'; echo; git diff --cached --summary --name-status | sd '^A\t' '[Added]    - ' | sd '^M\t' '[Modified] - ' | sd '^D\t' '[Deleted]  - '))"
+git commit -m "$(echo 'Automatic update via ~/.local/bin/cadd'; echo; git diff --cached --summary --name-status | sd '^A\t' '[Added]    - ' | sd '^M\t' '[Modified] - ' | sd '^D\t' '[Deleted]  - ')"
 popd > /dev/null
 
