@@ -72,7 +72,7 @@ vim.keymap.set("x", "<leader>ys", function()
         vim.print("Selected text : " .. selected)
 
         -- Ensure scratch dir exists
-        local scratch_dir = vim.fn.stdpath("config") .. "/scratch"
+        local scratch_dir = "scratch"
         vim.fn.mkdir(scratch_dir, "p")
 
         local full_path = scratch_dir .. "/" .. fname
@@ -102,10 +102,8 @@ vim.keymap.set("n", "<leader>ps", function()
             return
         end
 
-        vim.print("Selected text : " .. selected)
-
         -- Ensure scratch dir exists
-        local scratch_dir = vim.fn.stdpath("config") .. "/scratch"
+        local scratch_dir = "scratch"
         vim.fn.mkdir(scratch_dir, "p")
 
         local full_path = scratch_dir .. "/" .. fname
