@@ -30,7 +30,6 @@ pushd . > /dev/null
 cd ~/.local/share/chezmoi/
 git add .
 git status
-git commit -m "Automatic update via ~/.local/bin/cadd"
-
+git commit -m "$(echo 'Automatic update via ~/.local/bin/cadd'; echo; git diff --cached --name-only | sed 's/^/- /')"
 popd > /dev/null
 
