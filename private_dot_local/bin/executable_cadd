@@ -18,7 +18,7 @@ chezmoi add ~/.config/skhd/skhdrc
 chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.conf ~/.config/kitty/light-theme.auto.conf ~/.config/kitty/kitty.conf
 
 # INFO: Executable
-chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush ~/.local/bin/gitspeedup
+chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush ~/.local/bin/gitspeedup ~/.local/bin/cap 
 
 # INFO: ccache
 chezmoi add ~/.ccache/ccache.conf
