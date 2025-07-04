@@ -1,6 +1,6 @@
 set +e
 # INFO: Install general packages
-brew install starship fzf curl nodejs npm python3 git kitty bat nvim tmux neofetch fd ripgrep git-delta
+brew install starship fzf curl nodejs npm python3 git kitty bat nvim tmux fastfetch fd ripgrep git-delta
 
 # INFO: C++ Dev
 brew install ccache cmake lld
