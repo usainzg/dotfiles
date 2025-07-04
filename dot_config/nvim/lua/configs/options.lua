@@ -11,14 +11,11 @@ vim.opt.scrolloff      = 10
 
 vim.opt.tabstop        = 8
 vim.opt.softtabstop    = 4
-vim.opt.shiftwidth     = 4
+vim.opt.shiftwidth     = 2
 -- vim.opt.expandtab      = true
 vim.opt.incsearch      = true
 
-vim.opt.numberwidth    = 2
-vim.opt.signcolumn     = "yes:2"
-
-vim.opt.laststatus     = 3
+vim.opt.laststatus     = 2
 
 vim.opt.spell          = false
 

@@ -48,7 +48,7 @@ return {
 
 
 
-                vim.keymap.set("n", "<leader>la", fzf_lua.lsp_code_actions,
+                vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
                     { noremap = true, silent = true, desc = "Code action" })
 
 

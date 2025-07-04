@@ -30,7 +30,7 @@ return {
                 sections = {
                     lualine_a = {
                         'mode', 'branch' },
-                    lualine_b = { 'lsp_status',
+                    lualine_b = { 'lsp_status', 'diff'
                     },
                     lualine_c = { {
                         'filename',
