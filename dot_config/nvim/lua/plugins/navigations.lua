@@ -7,7 +7,19 @@ return {
 
             dependencies = { "nvim-tree/nvim-web-devicons" },
             config = function()
-                require('fzf-lua').setup({ 'telescope', "hide", })
+                require('fzf-lua').setup({
+                    'telescope',
+                    "hide",
+                    oldfiles = {
+                        prompt                  = 'History❯ ',
+                        cwd_only                = true,
+                        stat_file               = true, -- verify files exist on disk
+                        -- can also be a lua function, for example:
+                        -- stat_file = require("fzf-lua").utils.file_is_readable,
+                        -- stat_file = function() return true end,
+                        include_current_session = true, -- include bufs from current session
+                    }
+                })
                 local fzf_lua = require("fzf-lua")
 
                 vim.keymap.set('n', '<leader>ff', fzf_lua.files, { desc = "Find files" })
