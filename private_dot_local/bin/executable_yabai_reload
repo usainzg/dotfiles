@@ -1,0 +1,3 @@
+sudo yabai --load-sa
+yabai --restart-service
+skhd --restart-service

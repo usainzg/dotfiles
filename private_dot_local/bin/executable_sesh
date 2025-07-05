@@ -7,11 +7,27 @@ else
             find ~/Developer/github ~/Developer/igalia ~/projects  -mindepth 1 -maxdepth 1 -type d
             find ~/Developer/nvim_proj ~/projects -mindepth 1 -maxdepth 1 -type d
             find ~/.config/nvim -maxdepth 0 -type d
+            echo ~/.local/share/chezmoi/
+            echo ~/.local/bin/cadd
+            echo ~/.local/bin/cinstall
+            echo ~/.local/bin/cap
+            echo ~/.local/bin/cpush
+            echo ~/.local/bin/sesh
+            echo ~/.local/bin/yabai_reload
+            echo ~/.config/kitty/kitty.conf
+            echo ~/.config/skhd/skhdrc
+            echo ~/.config/yabai/yabairc
         ) | fzf
     )
 fi
 
 if [[ -z $selected ]]; then
+    exit 0
+fi
+
+
+if [[ -f $selected ]]; then
+    nvim "$selected"
     exit 0
 fi
 
@@ -38,13 +54,12 @@ if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux select-pane -t 0
 
     tmux select-window -t 0
-    tmux send-keys -t 0 'fastfetch' C-j
     tmux send-keys -t 1.0 'git status' C-j
     tmux send-keys -t 1.1 'ls' C-j
 
 
 
-    tmux send-keys -t 0 'nvim .' 
+    tmux send-keys -t 0 'nvim .' C-j 
 fi
 
 
