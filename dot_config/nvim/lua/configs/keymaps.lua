@@ -93,6 +93,20 @@ vim.keymap.set("x", "<leader>ys", function()
     end)
 end, { desc = "Yank current selection to the scratch/ folder" })
 
+local yank_file = function()
+    local path = vim.fn.expand('%:p')
+    vim.fn.setreg('+', path)
+    print('Copied: ' .. path)
+end
+
+
+local yank_file_with_location = function()
+    local path = vim.fn.expand('%:p')
+    local line = vim.fn.line('.')
+    local result = path .. ':' .. line
+    vim.fn.setreg('+', result)
+    print('Copied: ' .. result)
+end
 
 vim.keymap.set("n", "<leader>ps", function()
     -- Prompt for filename
@@ -112,7 +126,7 @@ vim.keymap.set("n", "<leader>ps", function()
         local f = io.open(full_path, "w")
 
         if f then
-            f:write(vim.fn.getreg('"'))
+            f:write(vim.fn.getreg('+'))
             f:close()
         else
             print("Failed to write to file: " .. full_path)
@@ -121,18 +135,20 @@ vim.keymap.set("n", "<leader>ps", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
+        yank_file()
     end)
 end, { desc = "Paste current selection to the scratch/ folder" })
 
 
 
 vim.keymap.set('n', '<leader>yf', function()
-    local path = vim.fn.expand('%:p')
-    vim.fn.setreg('+', path)
-    print('Copied: ' .. path)
+    yank_file()
 end, { desc = 'Copy full path of current buffer to clipboard' })
 
 
+vim.keymap.set('n', '<leader>yl', function()
+    yank_file_with_location()
+end, { desc = 'Copy full path of current buffer to clipboard' })
 -- THIS IS FOR DEBUGGING
 -- vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 -- vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)
