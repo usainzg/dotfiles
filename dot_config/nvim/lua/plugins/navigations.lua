@@ -121,7 +121,7 @@ return {
                                 enabled = true,
                                 disabled = {},
                                 -- nvim-treesitter-context config options
-                                context = { enable = true, max_lines = 2, line_number = true, trim_scope = "outer" }
+                                context = { enable = true, max_lines = 3, line_number = true, trim_scope = "outer" }
                             },
                             -- By default, the main window dimensions are calculated as if the
                             -- preview is visible, when hidden the main window will extend to
