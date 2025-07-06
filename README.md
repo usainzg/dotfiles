@@ -152,10 +152,11 @@ Furthermore, small quality-of-life ability such as staging the current selected 
 
 My neovim config also supports git through the mapping group `<leader>h*`. A few capabilities include:
 - Automatic git signs: shows green in the column for addition, and red for deletion.
-- `<leader>yh`: Copy the git blame SHA on current line
-- `<leader>hb`: Show the git blame on the current file
-- `<leader>hs`: Stage the current hunk to git add
-- `<leader>hr`: Reset the current hunk from git add
+- Automatic git blame on current line: shows the author and the commit message for the last change to current line.
+- `<leader>yh`: (Y)ank the git blame SHA on current line
+- `<leader>hb`: Show the git (b)lame on the current file
+- `<leader>hs`: (S)tage the current hunk to git add
+- `<leader>hr`: (R)eset the current hunk from git add
 
 ### Autocmd
 
