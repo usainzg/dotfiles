@@ -3,6 +3,19 @@
 Hi everyone, welcome to my collection of dotfiles. The dotfiles is geared towards neovim/tmux/MacOS and my job, which is compiler development.
 
 Before blindly initializing and running the commands in this dotfile, do your due diligence first and read through every link here if you're not familiar with one. You can also dive into the configuration files themselves.
+## Why?
+
+A very, very smart CS person in my compiler class at uni once told me something along
+the line of "use/build your tool very well" and I feel like
+I want to share it in this blog. The use case of when he told me might be different
+, but the principle still remains the same: regardless if it's about the compiler, terminal tool, or
+your IDE, it really pays off to learn how to use your tool so good that it
+completely boosts your productivity into a different dimension.
+
+In my case, automating to shave seconds off each time I compile, test, debug or query my code really reinforces the
+dev cycle, making me lose less mental capacity and gain more efficiency.
+
+Alright, that's all the yapping. Let's get to it :)
 
 ## Initialization and Upkeep
 
@@ -24,10 +37,19 @@ With a large number of files to keep up with and update, I've outgrown chezmoi's
 - `cap`: A wrapper executable that executes `cadd` and `cpush`
 - `cinstall`: On a new mac machine, I call this script to install (almost) all necessary packages for my development.
 
+
+With these commands, I:
+- Don't have to remember which files I've edited or changed.
+- Don't have to remember which package/library I need to install on a new machine
+- Cut downs from (at minimum) 20 keystrokes to (at most) 4 keystrokes to register my new modifications.
+- Waste no time waiting for chezmoi to add, and push as there is a script guaranteeing that each time it's the same
+result.
+
+
 ## Window Manager (WM)
 On MacOS, I'm currently using [yabai](https://github.com/koekeishiya/yabai) together with [skhd](https://github.com/koekeishiya/skhd) to drive my window management setup. Have a quick read about them if you haven't got a chance.
 
-Using a Window Manager alleviate my reliance on the built-in mousepad and relieve me from programming [wrist pain](https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/)
+Using a Window Manager alleviates my reliance on the built-in mousepad and relieves me from programming [wrist pain](https://www.reddit.com/r/learnprogramming/comments/1dx9qgr/wrist_hurts_from_too_much_programming/)
 
 Let's talk about WM now :)
 
@@ -42,10 +64,10 @@ Secondly, there's a philosophy that you probably need to know about the window m
 - Shift + Cmd + `key`: Move the actual window to ...
 
 ### WM keybinds
-- Cmd + hjkl : Switch the focus to left down up right window in the current workspace.
-- Cmd + 1234: Switch to focus to workspace 1 2 3 4
-- Shift + Cmd + hjkl: Move the current window (in the current workspace) to left down up right.
-- Shift + Cmd + 1234: Move the current window to workspace 1 2 3 4.
+- Cmd + hjkl: (Switch) the focus to left down up right window in the current workspace.
+- Cmd + 1234: (Switch) to focus to workspace 1 2 3 4
+- Shift + Cmd + hjkl: (Move the current window) (in the current workspace) to left down up right.
+- Shift + Cmd + 1234: (Move the current window) to workspace 1 2 3 4.
 ## Atuin
 
 Atuin is an automatic fuzzy finding tool for your terminal commands. It has helped me so much with rerunning my building and testing commands and has saved me hours of work.
@@ -89,12 +111,15 @@ As a result, here is a selected list of commands, ordered by functionality
 
 ### Scratchpad file and debugging.
 
-- `<leader>ps`: (P)aste the content in register `+` to a newly created, name-inputted-by-user file under the scratch/ directory, and copied the file name into your copy-and-paste register (+).
-- `<leader>ys`: (Y)ank and paste the currently selection to a newly created, name-inputted-by-user file under the scratch/ directory and copied the file name into your copy-and-paste register (+).
-- `<leader>yl`: Yank the full path + current file name + current line of the cursor and put it in the copy-and-paste register (+).
-- `<leader>yf`: Yank the full path + current file name and put it in the copy-and-paste register (+).
+- `<leader>ps`: (P)aste the content in register `+` to a newly created, name-inputted-by-user file under the
+scratch/ directory, and copied the full path file name into your copy-and-paste register (+).
+- `<leader>ys`: (Y)ank and paste the current selection to a newly created, name-inputted-by-user file under the
+scratch/ directory and copied the full path file name into your copy-and-paste register (+).
+- `<leader>yl`: (Y)ank the full path + current file name + current line of the cursor and put it in the
+copy-and-paste register (+).
+- `<leader>yf`: (Y)ank the full path + current file name and put it in the copy-and-paste register (+).
 
-The functionality related to scratchpad-ing and debugging are helpful in regards to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
+The functionality related to scratchpad-ing and debugging are helpful in regard to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
 
 ### Fuzzy-finder & Grepping
 
