@@ -46,7 +46,13 @@ Secondly, there's a philosophy that you probably need to know about the window m
 - Cmd + 1234: Switch to focus to workspace 1 2 3 4
 - Shift + Cmd + hjkl: Move the current window (in the current workspace) to left down up right.
 - Shift + Cmd + 1234: Move the current window to workspace 1 2 3 4.
+## Atuin
 
+Atuin is an automatic fuzzy finding tool for your terminal commands. It has helped me so much with rerunning my building and testing commands and has saved me hours of work.
+
+I recommend you check out their [website](https://atuin.sh/) and watch the demo for yourself.
+
+In my opinion, it's a pretty essential tool for all CLI users.
 ## Kitty 
 Kitty is my chosen terminal. I switched from iterm2 to Kitty for the following reason:
 
