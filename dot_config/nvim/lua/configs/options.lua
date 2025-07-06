@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
         vim.api.nvim_echo({ {
             "File changed on disk. Buffer reloaded.",
             "WarningMsg"
-        } }, true, {})
+        } }, false, {})
     end
 })
 

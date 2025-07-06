@@ -83,6 +83,36 @@ I then turned my focus to fzf-lua and hasn't looked back since.
 The mapping group for the fuzzy finding functionality is `<leader>f*` and `<leader>g*`
 - `<leader>fg`: fuzzy find using ripgrep.
 - `<leader>ff`: fuzzy find using fd.
-- `<leader>fd`: 
+- `<leader>fd`: fuzzy find vim diagnostics.
+- `<leader>fm`: fuzzy find marks.
+- `<leader>fb`: fuzzy find recently opened buffers (within current nvim-executed folder)
+- `<leader>g`: fuzzy find using ripgrep the word under the cursor or the current selection. 
 
-### Language server 
+### Language server support 
+
+LSP is also supported via the mapping group `<leader>l*`
+- `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
+- `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
+- `<leader>c`: For C++, switch from a header file to its corresponding source file.
+
+### Git support 
+
+My neovim config also supports git through the mapping group `<leader>h*`. A few capabilities include:
+- Automatic git signs: shows green in the column for addition, and red for deletion.
+- `<leader>yh`: Copy the git blame SHA on current line
+- `<leader>hb`: Show the git blame on the current file
+- `<leader>hs`: Stage the current hunk to git add
+- `<leader>hr`: Reset the current hunk from git add
+
+
+
+### Autocmd
+
+I also have some quality-of-life auto commands.
+
+- When I've performed a yank, I automatically highlight the yanked content for half a second to cognitively confirm the content.
+
+- When I opened a file again, I automatically go to the last position where it was edited.
+
+- When I've search for something and it's highlighted across the file, I automatically remove the highlighting when I enter insert mode.
+
