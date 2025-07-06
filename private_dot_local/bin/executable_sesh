@@ -26,10 +26,6 @@ if [[ -z $selected ]]; then
 fi
 
 
-if [[ -f $selected ]]; then
-    nvim "$selected"
-    exit 0
-fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
@@ -43,23 +39,25 @@ fi
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
    tmux new-session -d -s $selected_name -c $selected
 
-    tmux new-window -c $selected -n "terminal_${selected_name}"
-    #
-    # Split the window vertically (main pane on left)
-    tmux split-window -h -c $selected -l 33%
+    if [[ -f $selected ]]; then
+        tmux send-keys -t 0 "nvim \"$selected\"" C-j
+    else
+        tmux new-window -c $selected -n "terminal_${selected_name}"
 
-    # Split the right pane horizontally
-    tmux split-window -v -c $selected
-    # Select the main (left) pane
-    tmux select-pane -t 0
+        # Split the window vertically (main pane on left)
+        tmux split-window -h -c $selected -l 33%
 
-    tmux select-window -t 0
-    tmux send-keys -t 1.0 'git status' C-j
-    tmux send-keys -t 1.1 'ls' C-j
+        # Split the right pane horizontally
+        tmux split-window -v -c $selected
+        # Select the main (left) pane
+        tmux select-pane -t 0
 
+        tmux select-window -t 0
+        tmux send-keys -t 1.0 'git status' C-j
+        tmux send-keys -t 1.1 'ls' C-j
 
-
-    tmux send-keys -t 0 'nvim .' C-j 
+        tmux send-keys -t 0 'nvim .' C-j 
+    fi
 fi
 
 

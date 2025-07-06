@@ -181,7 +181,7 @@ return {
                     { desc = "fzf-lua search incoming call " })
                 vim.keymap.set('n', '<leader>fo', fzf_lua.lsp_outgoing_calls,
                     { desc = "fzf-lua search incoming call " })
-                vim.keymap.set('n', '<leader>fm', fzf_lua.man_pages, { desc = "fzf-lua resume last search history" })
+                vim.keymap.set('n', '<leader>fm', fzf_lua.marks, { desc = "fzf-lua marks" })
                 vim.keymap.set('n', '<leader>fp', fzf_lua.search_history, { desc = "fzf-lua search history" })
                 vim.keymap.set('n', '<leader>fd', fzf_lua.lsp_finder, { desc = "LSP search diagnostics" })
 

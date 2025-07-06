@@ -29,15 +29,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 --- KEY MAPS
 
-vim.keymap.set("n", "<leader>h", function()
-    vim.cmd("set nosplitright")
-    vim.cmd("vsplit")
-    vim.cmd("LspClangdSwitchSourceHeader")
-    vim.cmd("set splitright")
-end, { desc = "Open matching header file in current buffer" })
-
 vim.keymap.set("n", "<leader>c", function()
-    vim.cmd("vsplit")
     vim.cmd("LspClangdSwitchSourceHeader")
 end, { desc = "Open matching source file in current buffer" })
 

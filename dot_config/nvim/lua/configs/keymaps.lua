@@ -60,38 +60,6 @@ vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 
 
-vim.keymap.set("x", "<leader>ys", function()
-    local selected = utils.extract_vis_text()
-    -- Prompt for filename
-    vim.ui.input({ prompt = "Scratch filename (under scratch/): " }, function(fname)
-        if not fname or fname == "" then
-            print("Aborted: No filename given.")
-            return
-        end
-
-        vim.print("Selected text : " .. selected)
-
-        -- Ensure scratch dir exists
-        local scratch_dir = "scratch"
-        vim.fn.mkdir(scratch_dir, "p")
-
-        local full_path = scratch_dir .. "/" .. fname
-
-        -- Write to file
-        local f = io.open(full_path, "w")
-
-        if f then
-            f:write(selected .. "\n")
-            f:close()
-        else
-            print("Failed to write to file: " .. full_path)
-            return
-        end
-
-        -- Open the file in a new buffer
-        vim.cmd("tabedit " .. full_path)
-    end)
-end, { desc = "Yank current selection to the scratch/ folder" })
 
 local yank_file = function()
     local path = vim.fn.expand('%:p')
@@ -139,16 +107,46 @@ vim.keymap.set("n", "<leader>ps", function()
     end)
 end, { desc = "Paste current selection to the scratch/ folder" })
 
+vim.keymap.set("x", "<leader>ys", function()
+    local selected = utils.extract_vis_text()
+    -- Prompt for filename
+    vim.ui.input({ prompt = "Scratch filename (under scratch/): " }, function(fname)
+        if not fname or fname == "" then
+            print("Aborted: No filename given.")
+            return
+        end
+
+        vim.print("Selected text : " .. selected)
+
+        -- Ensure scratch dir exists
+        local scratch_dir = "scratch"
+        vim.fn.mkdir(scratch_dir, "p")
+
+        local full_path = scratch_dir .. "/" .. fname
+
+        -- Write to file
+        local f = io.open(full_path, "w")
+
+        if f then
+            f:write(selected .. "\n")
+            f:close()
+        else
+            print("Failed to write to file: " .. full_path)
+            return
+        end
+
+        -- Open the file in a new buffer
+        vim.cmd("tabedit " .. full_path)
+    end)
+end, { desc = "Yank current selection to the scratch/ folder" })
 
 
-vim.keymap.set('n', '<leader>yf', function()
-    yank_file()
-end, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yf', yank_file, { desc = 'Copy full path of current buffer to clipboard' })
 
 
-vim.keymap.set('n', '<leader>yl', function()
-    yank_file_with_location()
-end, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yl',
+    yank_file_with_location
+    , { desc = 'Copy full path of current buffer to clipboard' })
 -- THIS IS FOR DEBUGGING
 -- vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 -- vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)

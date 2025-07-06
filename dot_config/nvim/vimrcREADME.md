@@ -1,6 +1,6 @@
 -*- llvm/utils/vim/README -*-
 
-This directory contains settings for the vim editor to work on llvm *.ll and
+This vimrc contains settings for the vim editor to work on llvm *.ll and
 tablegen *.td files. It comes with filetype detection rules in the (ftdetect),
 syntax highlighting (syntax), some minimal sensible default settings (ftplugin)
 and indentation plugins (indent).

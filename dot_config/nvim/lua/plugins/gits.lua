@@ -61,8 +61,28 @@ return {
                         opts.buffer = bufnr
                         vim.keymap.set(mode, l, r, opts)
                     end
-                    vim.keymap.set('n', '<leader>yh', "<cmd> GitBlameCopySHA<CR>")
-                    map('n', 'gb', '<cmd> Gitsigns blame<CR>')
+                    vim.keymap.set('n', '<leader>yh', "<cmd> GitBlameCopySHA<CR>",
+                        { desc = "Copy the git blame SHA on current line" })
+                    vim.keymap.set('n', '<leader>hb', '<cmd> Gitsigns blame<CR>',
+                        { desc = "Show the git blame on the current file" })
+
+
+                    vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk,
+                        { desc = "Stage the current hunk to git add" })
+                    vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk,
+                        { desc = "Reset the current hunk from git add" })
+
+                    vim.keymap.set('v', '<leader>hs', function()
+                            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+                        end,
+                        { desc = "Stage the current hunk to git add (Visual edition)" })
+
+                    vim.keymap.set('v', '<leader>hr', function()
+                        gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+                    end, { desc = "Reset the current hunk from git add (Visual edition)" })
+
+                    vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk,
+                        { desc = "Git diff on the current hunk, see how different it is" })
                 end
             }
         end,
@@ -84,11 +104,6 @@ return {
             date_format = "%m-%d-%Y", -- template for the date, check Date format section for more options
             virtual_text_column = 0, -- virtual text start column, check Start virtual text at column section for more options
         },
-
         vim.keymap.set('n', '<leader>yh', "<cmd> GitBlameCopySHA<CR>")
-
-
-
-
     }
 }
