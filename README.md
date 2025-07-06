@@ -55,7 +55,11 @@ Kitty is my chosen terminal. I switched from iterm2 to Kitty for the following r
 
 When you're doing software dev on a big codebase, aesthetics is an afterthought instead of performance/speed.
 
-I also configure a few sane commands in Kitty for faster project switching.
+I also configure a few sane commands in Kitty for faster project maneuver:
+
+- Cmd + `M`: Run the executable `sesh` in the current terminal.
+- Cmd + `D`: Run the command `ctrl + b + d` to exit the current tmux session.
+- Cmd + `N`: Run the command `ctrl + b + n` to go to the next panel in the current tmux session.
 ## Neovim and programming
 
 Let's talk about neovim btw. Neovim is my chosen hyperextensible text editor. 
@@ -81,13 +85,15 @@ I then turned my focus to fzf-lua and hasn't looked back since.
 
 
 The mapping group for the fuzzy finding functionality is `<leader>f*` and `<leader>g*`
-- `<leader>fg`: fuzzy find using ripgrep.
-- `<leader>ff`: fuzzy find using fd.
-- `<leader>fd`: fuzzy find vim diagnostics.
-- `<leader>fm`: fuzzy find marks.
-- `<leader>fb`: fuzzy find recently opened buffers (within current nvim-executed folder)
+- `<leader>fg`: live fuzzy find using ripgrep.
+- `<leader>ff`: live fuzzy find using fd.
+- `<leader>fr`: resume the last live fuzzy find session.
+- `<leader>fd`: live fuzzy find vim diagnostics.
+- `<leader>fm`: live fuzzy find marks.
+- `<leader>fb`: live fuzzy find recently opened buffers (within current nvim-executed folder)
 - `<leader>g`: fuzzy find using ripgrep the word under the cursor or the current selection. 
 
+A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in.
 ### Language server support 
 
 LSP is also supported via the mapping group `<leader>l*`
