@@ -2,7 +2,7 @@
 
 Hi everyone, welcome to my collection of dotfiles. The dotfiles is geared towards neovim/tmux/MacOS and my job, which is compiler development.
 
-Before blindly initializing and running the commands in this dotfile, do your due diligence first and read through every link here if you're not familiar with one.
+Before blindly initializing and running the commands in this dotfile, do your due diligence first and read through every link here if you're not familiar with one. You can also dive into the configuration files themselves.
 
 ## Initialization and Upkeep
 
@@ -53,13 +53,26 @@ Kitty is my chosen terminal. I switched from iterm2 to Kitty for the following r
 - GPU acceleration: Kitty is smoother and faster than iterm2, this is important on a big codebase like llvm due to its massive improvement on rendering speed (rendering text in a big codebase in neovim on iterm2 is a pain.)
 - Configuration ease: configuration for Kitty is extremely easy: everything is in 1 single file, from themes to extra shortcuts.
 
-When you're doing software dev on a big codebase, aesthetics is an afterthought instead of performance/speed.
+When you're doing software dev on a big codebase, aesthetics is an afterthought instead of [performance/speed](https://sw.kovidgoyal.net/kitty/performance/).
 
 I also configure a few sane commands in Kitty for faster project maneuver:
 
 - Cmd + `M`: Run the executable `sesh` in the current terminal.
 - Cmd + `D`: Run the command `ctrl + b + d` to exit the current tmux session.
 - Cmd + `N`: Run the command `ctrl + b + n` to go to the next panel in the current tmux session.
+## ccache 
+I set my ccache to be 
+```
+file_clone = true
+inode_cache = true
+max_size = 70G
+base_dir = /
+absolute_paths_in_stderr = true
+```
+
+to allow ccache of multiple directories and more max size as well as more caching speed on my llvm builds, both release and debug version.
+
+Read the ccache manual for option explanations.
 ## Neovim and programming
 
 Let's talk about neovim btw. Neovim is my chosen hyperextensible text editor. 
@@ -79,10 +92,9 @@ The functionality related to scratchpad-ing and debugging are helpful in regards
 
 ### Fuzzy-finder & Grepping
 
-Back before starting my employment @ Igalia, I relied on telescope for all of my fuzzy finding. It turns out telescope is really really slow on big repository, even with ripgrep in place of grep. 
+Back before starting my employment @ Igalia, I relied on [telescope](https://github.com/nvim-telescope/telescope.nvim) for all of my fuzzy finding. It turns out telescope is [really really slow](https://www.reddit.com/r/neovim/comments/ura4vu/telescope_too_slow_for_large_directories/) on big repository, even with ripgrep in place of grep. 
 
-I then turned my focus to fzf-lua and hasn't looked back since.
-
+With fzf-lua being soooo sooo so customizable, I then turned my focus to said library and hasn't looked back since.
 
 The mapping group for the fuzzy finding functionality is `<leader>f*` and `<leader>g*`
 - `<leader>fg`: live fuzzy find using ripgrep.
@@ -96,12 +108,16 @@ The mapping group for the fuzzy finding functionality is `<leader>f*` and `<lead
 A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in.
 ### Language server support 
 
-LSP is also supported via the mapping group `<leader>l*`
+Language server protocol is a much needed functionality in a code editor.
+
+It is also supported via the mapping group `<leader>l*`
 - `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
 - `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
 - `<leader>c`: For C++, switch from a header file to its corresponding source file.
 
 ### Git support 
+For a beginner in a codebase (even a seasoned programmer), the ability to obtain more information and context, extending further than the code sitting in front of them, is extremely helpful.
+Furthermore, small quality-of-life ability such as staging the current selected change to git add (instead of git adding the whole file) is very much appreciated.
 
 My neovim config also supports git through the mapping group `<leader>h*`. A few capabilities include:
 - Automatic git signs: shows green in the column for addition, and red for deletion.
@@ -109,8 +125,6 @@ My neovim config also supports git through the mapping group `<leader>h*`. A few
 - `<leader>hb`: Show the git blame on the current file
 - `<leader>hs`: Stage the current hunk to git add
 - `<leader>hr`: Reset the current hunk from git add
-
-
 
 ### Autocmd
 
@@ -120,5 +134,5 @@ I also have some quality-of-life auto commands.
 
 - When I opened a file again, I automatically go to the last position where it was edited.
 
-- When I've search for something and it's highlighted across the file, I automatically remove the highlighting when I enter insert mode.
+- When I've searched for something and it's highlighted across the file, I automatically remove the highlighting when I enter insert mode.
 
