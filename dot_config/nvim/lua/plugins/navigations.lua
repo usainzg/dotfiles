@@ -7,11 +7,11 @@ return {
 
             dependencies = { "nvim-tree/nvim-web-devicons", "nvim-treesitter/nvim-treesitter-context" },
             config = function()
-                require 'treesitter-context'.setup {
+              local context_config = {
                     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
                     -- multiwindow = false,      -- Enable multiwindow support.
-                    max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
-                    -- min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+                    max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+                    min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
                     line_numbers = true,
                     -- multiline_threshold = 20, -- Maximum number of lines to show for a single context
                     trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
@@ -22,6 +22,8 @@ return {
                     -- zindex = 20,     -- The Z-index of the context window
                     -- on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
                 }
+
+                require 'treesitter-context'.setup(context_config)
                 require('fzf-lua').setup({
                     'telescope',
                     "hide",
@@ -121,7 +123,7 @@ return {
                                 enabled = true,
                                 disabled = {},
                                 -- nvim-treesitter-context config options
-                                context = { enable = true, max_lines = 3, line_number = true, trim_scope = "outer" }
+                                context = context_config 
                             },
                             -- By default, the main window dimensions are calculated as if the
                             -- preview is visible, when hidden the main window will extend to
