@@ -10,18 +10,18 @@ return {
       },
       config = function()
         local context_config = {
-          enable = true,    -- Enable this plugin (Can be enabled/disabled later via commands)
-          multiwindow = false, -- Enable multiwindow support.
-          max_lines = 0,    -- How many lines the window should span. Values <= 0 mean no limit.
-          min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+          enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+          multiwindow = false,      -- Enable multiwindow support.
+          max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+          min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
           line_numbers = true,
           multiline_threshold = 20, -- Maximum number of lines to show for a single context
-          trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-          mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+          trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+          mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
           -- Separator between context and content. Should be a single character string, like '-'.
           -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
           separator = nil,
-          zindex = 20, -- The Z-index of the context window
+          zindex = 20,     -- The Z-index of the context window
           on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
         }
         local actions = require("fzf-lua").actions
@@ -465,29 +465,29 @@ return {
             },
           },
           -- `blines` has the same defaults as `lines` aside from prompt and `show_bufname`
-blines = {
-    prompt            = 'CurrentBuffer❯ ',
-    },
-lines = {
-    prompt            = 'Lines❯ ',
-    file_icons        = false,
-    show_bufname      = false,         -- display buffer name
-    show_unloaded     = false,         -- show unloaded buffers
-    show_unlisted     = false,        -- exclude 'help' buffers
-    no_term_buffers   = true,         -- exclude 'term' buffers
-    sort_lastused     = true,         -- sort by most recent
-    winopts  = { treesitter = true }, -- enable TS highlights
-    fzf_opts = {
-      -- do not include bufnr in fuzzy matching
-      -- tiebreak by line no.
-      ["--multi"]     = true,
-      ["--delimiter"] = "[\t]",
-      ["--tabstop"]   = "1",
-      ["--tiebreak"]  = "index",
-      ["--with-nth"]  = "2..",
-      ["--nth"]       = "4..",
-    },
-  
+          blines = {
+            prompt  = 'CurrentBuffer❯ ',
+          },
+          lines = {
+            prompt          = 'Lines❯ ',
+            file_icons      = false,
+            show_bufname    = false,  -- display buffer name
+            show_unloaded   = false,  -- show unloaded buffers
+            show_unlisted   = false,  -- exclude 'help' buffers
+            no_term_buffers = true,   -- exclude 'term' buffers
+            sort_lastused   = true,   -- sort by most recent
+            winopts         = { treesitter = true }, -- enable TS highlights
+            fzf_opts        = {
+              -- do not include bufnr in fuzzy matching
+              -- tiebreak by line no.
+              ["--multi"]     = true,
+              ["--delimiter"] = "[\t]",
+              ["--tabstop"]   = "1",
+              ["--tiebreak"]  = "index",
+              ["--with-nth"]  = "2..",
+              ["--nth"]       = "4..",
+            },
+
           },
           tags = {
             prompt       = 'Tags❯ ',
