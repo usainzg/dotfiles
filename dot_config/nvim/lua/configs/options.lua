@@ -30,6 +30,9 @@ vim.diagnostic.config({
 vim.o.autoread = true
 
 -- Check if file has changed on disk
+--
+--
+--vim
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     pattern = "*",
     callback = function()
@@ -63,7 +66,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern  = '*',
-    callback = function() vim.highlight.on_yank { timeout = 300 } end
+    callback = function() vim.hl.on_yank { timeout = 300 } end
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
