@@ -57,6 +57,7 @@ return {
               fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" }
             },
             preview    = {
+
               -- default     = 'bat',           -- override the default previewer?
               -- default uses the 'builtin' previewer
               border       = "rounded", -- preview border: accepts both `nvim_open_win`
@@ -464,25 +465,29 @@ return {
             },
           },
           -- `blines` has the same defaults as `lines` aside from prompt and `show_bufname`
-          lines = {
-            prompt          = 'Lines❯ ',
-            file_icons      = true,
-            show_bufname    = true,                  -- display buffer name
-            show_unloaded   = true,                  -- show unloaded buffers
-            show_unlisted   = false,                 -- exclude 'help' buffers
-            no_term_buffers = true,                  -- exclude 'term' buffers
-            sort_lastused   = true,                  -- sort by most recent
-            winopts         = { treesitter = true }, -- enable TS highlights
-            fzf_opts        = {
-              -- do not include bufnr in fuzzy matching
-              -- tiebreak by line no.
-              ["--multi"]     = true,
-              ["--delimiter"] = "[\t]",
-              ["--tabstop"]   = "1",
-              ["--tiebreak"]  = "index",
-              ["--with-nth"]  = "2..",
-              ["--nth"]       = "4..",
-            },
+blines = {
+    prompt            = 'CurrentBuffer❯ ',
+    },
+lines = {
+    prompt            = 'Lines❯ ',
+    file_icons        = false,
+    show_bufname      = false,         -- display buffer name
+    show_unloaded     = false,         -- show unloaded buffers
+    show_unlisted     = false,        -- exclude 'help' buffers
+    no_term_buffers   = true,         -- exclude 'term' buffers
+    sort_lastused     = true,         -- sort by most recent
+    winopts  = { treesitter = true }, -- enable TS highlights
+    fzf_opts = {
+      -- do not include bufnr in fuzzy matching
+      -- tiebreak by line no.
+      ["--multi"]     = true,
+      ["--delimiter"] = "[\t]",
+      ["--tabstop"]   = "1",
+      ["--tiebreak"]  = "index",
+      ["--with-nth"]  = "2..",
+      ["--nth"]       = "4..",
+    },
+  
           },
           tags = {
             prompt       = 'Tags❯ ',
@@ -724,7 +729,7 @@ return {
           fzf_lua.live_grep_native, { desc = "Find words" })
         vim.keymap.set('n', '<leader>fb', fzf_lua.oldfiles, { desc = "Find buffers" })
         vim.keymap.set('n', '<leader>fh', fzf_lua.help_tags, { desc = "Find help tags" })
-        vim.keymap.set('n', '/', fzf_lua.lgrep_curbuf, { desc = "Find in current buffer" })
+        vim.keymap.set('n', '/', fzf_lua.blines, { desc = "Find in current buffer (smart fallback if not on-disk file)" })
 
         vim.keymap.set('n', '<leader>fr', fzf_lua.resume, { desc = "fzf-lua resume last search history" })
         vim.keymap.set('n', '<leader>fi', fzf_lua.lsp_incoming_calls,

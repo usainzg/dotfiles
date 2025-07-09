@@ -8,14 +8,12 @@ vim.opt.relativenumber = true
 vim.opt.number         = true
 
 vim.opt.scrolloff      = 10
-
 vim.opt.tabstop        = 8
 vim.opt.softtabstop    = 4
 vim.opt.shiftwidth     = 2
 -- vim.opt.expandtab      = true
 vim.opt.incsearch      = true
 
-vim.opt.laststatus     = 2
 
 vim.opt.spell          = false
 
