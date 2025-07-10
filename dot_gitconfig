@@ -11,7 +11,7 @@
     br = branch 
     sts = status 
     co = checkout
-  cb = co -b
+    cb = co -b
 
 
     commit-with-prefix = "!f() { \
