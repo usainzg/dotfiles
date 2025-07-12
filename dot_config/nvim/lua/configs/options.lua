@@ -43,10 +43,9 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 vim.api.nvim_create_autocmd("FileChangedShellPost", {
     pattern = "*",
     callback = function()
-        vim.api.nvim_echo({ {
-            "File changed on disk. Buffer reloaded.",
-            "WarningMsg"
-        } }, false, {})
+        vim.print({
+            "File changed on disk. Buffer reloaded.",}
+        , false, {})
     end
 })
 -- Highlighting spaces
