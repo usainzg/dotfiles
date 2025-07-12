@@ -12,8 +12,6 @@
     sts = status 
     co = checkout
     cb = co -b
-
-
     commit-with-prefix = "!f() { \
         prefix=$1; \
         shift; \
@@ -26,7 +24,6 @@
         git commit -m \"$prefix: $description\"; \
     }; f"
 
-    cm = commit -m
     aoe = "!git commit --amend --no-edit"
     fix = "!git commit-with-prefix FIX"
     feat = "!git commit-with-prefix FEAT"

@@ -48,19 +48,7 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
         } }, false, {})
     end
 })
--- Highlighting spaces
--- local match_id = nil
---
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
---   pattern = "*",
---   callback = function()
---     vim.cmd("highlight ExtraSpaces ctermbg=red guibg=red")
---     if match_id then
---       pcall(vim.fn.matchdelete, match_id)
---     end
---     match_id = vim.fn.matchadd("ExtraSpaces", [[\(\S\)\s\{2}\(\S\)]])
---   end,
--- })
+
 
 --- Open file at the last position it was edited earlier
 vim.api.nvim_create_autocmd("BufReadPost", {
