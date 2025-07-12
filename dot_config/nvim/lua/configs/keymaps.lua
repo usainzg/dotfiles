@@ -78,7 +78,7 @@ end
 
 vim.keymap.set("n", "<leader>ps", function()
     -- Prompt for filename
-    local fname = vim.ui.input({ prompt = "Scratch filename (under scratch/): " }, function(fname)
+    vim.ui.input({ prompt = "Scratch filename (under scratch/): " }, function(fname)
         if not fname or fname == "" then
             print("Aborted: No filename given.")
             return
@@ -104,10 +104,11 @@ vim.keymap.set("n", "<leader>ps", function()
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
         yank_file()
-      end)
+    end)
 end, { desc = "Paste current selection to the scratch/ folder" })
 
 vim.keymap.set("x", "<leader>ys", function()
+    local selected = utils.extract_vis_text()
     -- Prompt for filename
     vim.ui.input({ prompt = "Scratch filename (under scratch/): " }, function(fname)
         if not fname or fname == "" then
@@ -115,7 +116,7 @@ vim.keymap.set("x", "<leader>ys", function()
             return
         end
 
-        local selected = utils.extract_vis_text()
+        vim.print("Selected text : " .. selected)
 
         -- Ensure scratch dir exists
         local scratch_dir = "scratch"
@@ -136,7 +137,6 @@ vim.keymap.set("x", "<leader>ys", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
-        yank_file()
     end)
 end, { desc = "Yank current selection to the scratch/ folder" })
 

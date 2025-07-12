@@ -8,12 +8,14 @@ vim.opt.relativenumber = true
 vim.opt.number         = true
 
 vim.opt.scrolloff      = 10
+
 vim.opt.tabstop        = 8
 vim.opt.softtabstop    = 4
 vim.opt.shiftwidth     = 2
 -- vim.opt.expandtab      = true
 vim.opt.incsearch      = true
 
+vim.opt.laststatus     = 3
 
 vim.opt.spell          = false
 
@@ -28,9 +30,6 @@ vim.diagnostic.config({
 vim.o.autoread = true
 
 -- Check if file has changed on disk
---
---
---vim
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     pattern = "*",
     callback = function()
@@ -76,7 +75,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern  = '*',
-    callback = function() vim.hl.on_yank { timeout = 300 } end
+    callback = function() vim.highlight.on_yank { timeout = 300 } end
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
