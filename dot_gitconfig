@@ -12,6 +12,10 @@
     sts = status 
     co = checkout
     cb = co -b
+    p = "!f() { git checkout \"$(git branch | fzf | sed 's/^..//')\"; }; f"
+    ds = diff --staged
+
+
     commit-with-prefix = "!f() { \
         prefix=$1; \
         shift; \
@@ -24,6 +28,7 @@
         git commit -m \"$prefix: $description\"; \
     }; f"
 
+    cm = commit -m
     aoe = "!git commit --amend --no-edit"
     fix = "!git commit-with-prefix FIX"
     feat = "!git commit-with-prefix FEAT"

@@ -8,14 +8,12 @@ vim.opt.relativenumber = true
 vim.opt.number         = true
 
 vim.opt.scrolloff      = 10
-
 vim.opt.tabstop        = 8
 vim.opt.softtabstop    = 4
 vim.opt.shiftwidth     = 2
 -- vim.opt.expandtab      = true
 vim.opt.incsearch      = true
 
-vim.opt.laststatus     = 3
 
 vim.opt.spell          = false
 
@@ -30,6 +28,9 @@ vim.diagnostic.config({
 vim.o.autoread = true
 
 -- Check if file has changed on disk
+--
+--
+--vim
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     pattern = "*",
     callback = function()
@@ -48,7 +49,19 @@ vim.api.nvim_create_autocmd("FileChangedShellPost", {
         } }, false, {})
     end
 })
-
+-- Highlighting spaces
+-- local match_id = nil
+--
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+--   pattern = "*",
+--   callback = function()
+--     vim.cmd("highlight ExtraSpaces ctermbg=red guibg=red")
+--     if match_id then
+--       pcall(vim.fn.matchdelete, match_id)
+--     end
+--     match_id = vim.fn.matchadd("ExtraSpaces", [[\(\S\)\s\{2}\(\S\)]])
+--   end,
+-- })
 
 --- Open file at the last position it was edited earlier
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -63,7 +76,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern  = '*',
-    callback = function() vim.highlight.on_yank { timeout = 300 } end
+    callback = function() vim.hl.on_yank { timeout = 300 } end
 })
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {

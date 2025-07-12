@@ -15,11 +15,10 @@ else
             echo ~/.local/bin/sesh
             echo ~/.local/bin/yabai_reload
             echo ~/.config/kitty/kitty.conf
-            echo ~/.config/skhd/skhdrc
-            echo ~/.config/yabai/yabairc
-            echo ~/.config/git/ignore
             echo ~/.gitconfig
             echo ~/.gitconfig-work
+            echo ~/.config/skhd/skhdrc
+            echo ~/.config/yabai/yabairc
         ) | fzf
     )
 fi

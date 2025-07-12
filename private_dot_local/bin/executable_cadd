@@ -5,7 +5,7 @@ git rm -rf dot_config/nvim
 # INFO: cadd STANDS FOR CHEZMOI ADDING ALL RELATED FILE
 #
 # Add zsh gitconfig
-chezmoi add ~/.zshrc ~/.gitconfig ~/.config/git/ignore
+chezmoi add ~/.zshrc ~/.gitconfig
 
 # INFO: Tmux
 chezmoi add ~/.tmux.conf

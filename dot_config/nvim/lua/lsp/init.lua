@@ -19,11 +19,11 @@ vim.lsp.enable('rust_analyzer')
 --- AUTO COMMANDS
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function(args)
-        vim.lsp.buf.format({
-            async = false,
-            bufnr = args.buf,
-            timeout_ms = 1000,
-        })
+        -- vim.lsp.buf.format({
+        --     async = false,
+        --     bufnr = args.buf,
+        --     timeout_ms = 1000,
+        -- })
     end,
 })
 
