@@ -8,6 +8,7 @@ else
             find ~/Developer/nvim_proj ~/projects -mindepth 1 -maxdepth 1 -type d
             find ~/.config/nvim -maxdepth 0 -type d
             echo ~/.local/share/chezmoi/
+            echo ~/.zshrc
             echo ~/.local/bin/cadd
             echo ~/.local/bin/cinstall
             echo ~/.local/bin/cap
