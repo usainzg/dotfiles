@@ -11,7 +11,7 @@
     br = branch 
     sts = status 
     co = checkout
-    cb = co -b
+    cb = checkout -b
     p = "!f() { git checkout \"$(git branch | fzf | sed 's/^..//')\"; }; f"
     ds = diff --staged
 

@@ -40,14 +40,14 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
     end
 })
 -- Notification after file change
-vim.api.nvim_create_autocmd("FileChangedShellPost", {
-    pattern = "*",
-    callback = function()
-        vim.print({
-            "File changed on disk. Buffer reloaded.",}
-        , false, {})
-    end
-})
+-- vim.api.nvim_create_autocmd("FileChangedShellPost", {
+--     pattern = "*",
+--     callback = function()
+--         vim.print({
+--             "File changed on disk. Buffer reloaded.",}
+--         , false, {})
+--     end
+-- })
 -- Highlighting spaces
 -- local match_id = nil
 --
