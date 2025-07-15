@@ -747,8 +747,7 @@ return {
           { desc = "LSP references via fzf-lua" })
         vim.keymap.set("x", "<leader>g", fzf_lua.grep_visual,
           { desc = "Ripgrep selection" })
-
-
+        vim.keymap.set("n", '<leader>fs',fzf_lua.treesitter, { desc =  "Symbols in current buffer" })
 
         vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
           { noremap = true, silent = true, desc = "Code action" })
