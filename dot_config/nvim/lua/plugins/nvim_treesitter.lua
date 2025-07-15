@@ -68,11 +68,16 @@ branch = 'master',lazy = false,
     "nvim-treesitter/nvim-treesitter-context",
   config = function ()
       require 'treesitter-context'.setup()
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = function()
-          require("treesitter-context").enable()
-        end,
-      })
+      vim.keymap.set("n", "[c", function()
+        require("treesitter-context").go_to_context(vim.v.count1)
+      end, { silent = true })
+
+      require("treesitter-context").enable()
+      -- vim.api.nvim_create_autocmd("BufEnter", {
+      --   callback = function()
+      --     require("treesitter-context").enable()
+      --   end,
+      -- })
     end
   },
   }

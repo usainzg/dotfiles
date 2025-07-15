@@ -119,6 +119,7 @@ scratch/ directory and copied the full path file name into your copy-and-paste r
 copy-and-paste register (+).
 - `<leader>yf`: (Y)ank the (f)ull path + current file name and put it in the copy-and-paste register (+).
 - `<leader>yr`: (Y)ank the (r)elative path + current file name and put it in the copy-and-paste register (+).
+- `<leader>yg`: (Y)ank everything in the file and return cursor to the same location as before. This is helpful for copy pasting stuff to other people
 
 To me, this really speaks me to the power of neovim as a hyperextensible: comprising multiple steps in a single keybinds to boost developer productivity to the max.
 
@@ -139,7 +140,7 @@ The mapping group for the fuzzy finding functionality is `<leader>f*` and `<lead
 - `<leader>fb`: live fuzzy find recently opened buffers (within current nvim-executed folder)
 - `<leader>g`: fuzzy find using ripgrep the word under the cursor or the current selection. 
 
-A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in.
+A cool thing about fzf-lua is I can add nvim-treesitter-context as a dependency, which gives me extra context for every match in a file. This makes it so that for example, if I'm searching for a string or a variable in C++, I can instantly know which function the variable is residing in, as well as jump to said function/codeblock with the keymap `[c`.
 ### Language server support 
 
 Language server protocol is a much needed functionality in a code editor.
@@ -148,6 +149,13 @@ It is also supported via the mapping group `<leader>l*`
 - `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
 - `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
 - `<leader>c`: For C++, switch from a header file to its corresponding source file and vice versa
+- `<leader>n`: Go to next suggestion from the language server support.
+- `<leader>p`: Go to previous suggestion from the language server support.
+- `<leader>y`: Accept the current suggestion from the language server support.
+- `gc`: Instruct the LSP to comment out the current selection 
+- `gd`: Instruct the LSP to go to definition on the cursor.
+
+- `[m` &  `]m`: Jump to previous and next function.
 
 ### Git support 
 For a beginner in a codebase (even a seasoned programmer), the ability to obtain more information and context, extending further than the code sitting in front of them, is extremely helpful.

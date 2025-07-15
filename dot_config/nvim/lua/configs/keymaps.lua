@@ -150,6 +150,14 @@ vim.keymap.set('n', '<leader>yr', yank_rel_file, { desc = 'Copy relative path to
 vim.keymap.set('n', '<leader>yl',
     yank_file_with_location
     , { desc = 'Copy full path of current buffer to clipboard' })
+
+
+vim.keymap.set('n', '<leader>yg', function()
+    local cur = vim.api.nvim_win_get_cursor(0) -- Save current cursor position
+    vim.cmd('normal! ggVGy') -- Yank the whole file
+    vim.api.nvim_win_set_cursor(0, cur) -- Restore cursor position
+    print('Yanked whole file to system clipboard')
+end, { desc = 'Yank whole file and restore cursor position' })
 -- THIS IS FOR DEBUGGING
 -- vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 -- vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)
