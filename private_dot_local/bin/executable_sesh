@@ -16,6 +16,7 @@ else
             echo ~/.local/bin/sesh
             echo ~/.local/bin/yabai_reload
             echo ~/.config/kitty/kitty.conf
+            echo ~/.tmux.conf
             echo ~/.gitconfig
             echo ~/.gitconfig-work
             echo ~/.config/skhd/skhdrc
