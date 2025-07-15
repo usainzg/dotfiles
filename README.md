@@ -117,7 +117,10 @@ scratch/ directory, and copied the full path file name into your copy-and-paste 
 scratch/ directory and copied the full path file name into your copy-and-paste register (+).
 - `<leader>yl`: (Y)ank the full path + current file name + current line of the cursor and put it in the
 copy-and-paste register (+).
-- `<leader>yf`: (Y)ank the full path + current file name and put it in the copy-and-paste register (+).
+- `<leader>yf`: (Y)ank the (f)ull path + current file name and put it in the copy-and-paste register (+).
+- `<leader>yr`: (Y)ank the (r)elative path + current file name and put it in the copy-and-paste register (+).
+
+To me, this really speaks me to the power of neovim as a hyperextensible: comprising multiple steps in a single keybinds to boost developer productivity to the max.
 
 The functionality related to scratchpad-ing and debugging are helpful in regard to quickly recreating a file on your local machine from a github issue and execute/run them, as well as quickly input the file name + cursor location to [lldb](https://lldb.llvm.org/) for debugging.
 
@@ -144,7 +147,7 @@ Language server protocol is a much needed functionality in a code editor.
 It is also supported via the mapping group `<leader>l*`
 - `<leader>la`: Trigger code action on the cursor from the language server. This includes capitalize functions and variables to satisfy a standard, filling in the remaining case of a C++ switch construct.
 - `<leader>lr`: Smart rename - renaming a variable/function scope-wise.
-- `<leader>c`: For C++, switch from a header file to its corresponding source file.
+- `<leader>c`: For C++, switch from a header file to its corresponding source file and vice versa
 
 ### Git support 
 For a beginner in a codebase (even a seasoned programmer), the ability to obtain more information and context, extending further than the code sitting in front of them, is extremely helpful.

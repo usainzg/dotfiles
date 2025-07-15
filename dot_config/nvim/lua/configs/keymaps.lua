@@ -60,8 +60,13 @@ vim.cmd("tnoremap <esc> <C-\\><C-N>")
 
 
 
+local yank_rel_file = function()
+    local path = vim.fn.expand('%:.')
+    vim.fn.setreg('+', path)
+    print('Copied: ' .. path)
+end
 
-local yank_file = function()
+local yank_full_file = function()
     local path = vim.fn.expand('%:p')
     vim.fn.setreg('+', path)
     print('Copied: ' .. path)
@@ -103,7 +108,7 @@ vim.keymap.set("n", "<leader>ps", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
-        yank_file()
+        yank_full_file()
       end)
 end, { desc = "Paste current selection to the scratch/ folder" })
 
@@ -136,12 +141,13 @@ vim.keymap.set("x", "<leader>ys", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
-        yank_file()
+        yank_full_file()
     end)
 end, { desc = "Yank current selection to the scratch/ folder" })
 
 
-vim.keymap.set('n', '<leader>yf', yank_file, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yf', yank_full_file, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yr', yank_rel_file, { desc = 'Copy relative path to the current nvim dir of current buffer to clipboard' })
 
 
 vim.keymap.set('n', '<leader>yl',
