@@ -1,7 +1,4 @@
 local utils = require("utils")
-function string:contains(sub)
-    return self:find(sub, 1, true) ~= nil
-end
 
 local opts = { noremap = true, silent = true }
 

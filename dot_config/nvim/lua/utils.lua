@@ -28,4 +28,8 @@ M.jasmine_escape = function(str)
     return escaped
 end
 
+function string:contains(sub)
+    return self:find(sub, 1, true) ~= nil
+end
+
 return M
