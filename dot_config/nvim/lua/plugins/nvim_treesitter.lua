@@ -73,11 +73,6 @@ branch = 'master',lazy = false,
       end, { silent = true })
 
       require("treesitter-context").enable()
-      -- vim.api.nvim_create_autocmd("BufEnter", {
-      --   callback = function()
-      --     require("treesitter-context").enable()
-      --   end,
-      -- })
     end
   },
   }
