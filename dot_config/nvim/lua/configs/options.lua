@@ -78,6 +78,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.hl.on_yank { timeout = 300 } end
 })
 
+-- Remove hl search when enter Insert
 vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
     desc = "Remove hl search when enter Insert",
     callback = vim.schedule_wrap(function()
@@ -93,3 +94,6 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
   group = cursorGrp,
 })
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { pattern = '*', command = 'set nocursorline', group = cursorGrp })
+
+
+--

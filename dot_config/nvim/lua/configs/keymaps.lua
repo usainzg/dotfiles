@@ -28,8 +28,6 @@ keymap("n", "<leader>s", ":w<CR>", opts)
 keymap("n", "zz", ":qa!<CR>", opts)
 keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 
-
-
 vim.keymap.set("x", "<leader>lr", function()
     local selected = utils.extract_vis_text()
     vim.print("Selected text : " .. selected)
@@ -51,32 +49,8 @@ vim.keymap.set("n", "cp", function()
         vim.api.nvim_feedkeys("lcw", "n", true)
     end
 end)
-vim.keymap.set("n", "gs", ":%sm/", { noremap = true, silent = true, desc = "Highlight words under cursor" })
 -- QUICKLY EXIT TERMINAL MODE
 vim.cmd("tnoremap <esc> <C-\\><C-N>")
-
-
-
-local yank_rel_file = function()
-    local path = vim.fn.expand('%:.')
-    vim.fn.setreg('+', path)
-    print('Copied: ' .. path)
-end
-
-local yank_full_file = function()
-    local path = vim.fn.expand('%:p')
-    vim.fn.setreg('+', path)
-    print('Copied: ' .. path)
-end
-
-
-local yank_file_with_location = function()
-    local path = vim.fn.expand('%:p')
-    local line = vim.fn.line('.')
-    local result = path .. ':' .. line
-    vim.fn.setreg('+', result)
-    print('Copied: ' .. result)
-end
 
 vim.keymap.set("n", "<leader>ps", function()
     -- Prompt for filename
@@ -105,7 +79,7 @@ vim.keymap.set("n", "<leader>ps", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
-        yank_full_file()
+        utils.yank_full_file()
       end)
 end, { desc = "Paste current selection to the scratch/ folder" })
 
@@ -138,26 +112,15 @@ vim.keymap.set("x", "<leader>ys", function()
 
         -- Open the file in a new buffer
         vim.cmd("tabedit " .. full_path)
-        yank_full_file()
+        utils.yank_full_file()
     end)
 end, { desc = "Yank current selection to the scratch/ folder" })
 
-
-vim.keymap.set('n', '<leader>yf', yank_full_file, { desc = 'Copy full path of current buffer to clipboard' })
-vim.keymap.set('n', '<leader>yr', yank_rel_file, { desc = 'Copy relative path to the current nvim dir of current buffer to clipboard' })
-
-
-vim.keymap.set('n', '<leader>yl',
-    yank_file_with_location
-    , { desc = 'Copy full path of current buffer to clipboard' })
-
-
-vim.keymap.set('n', '<leader>yg', function()
-    local cur = vim.api.nvim_win_get_cursor(0) -- Save current cursor position
-    vim.cmd('normal! ggVGy') -- Yank the whole file
-    vim.api.nvim_win_set_cursor(0, cur) -- Restore cursor position
-    print('Yanked whole file to system clipboard')
-end, { desc = 'Yank whole file and restore cursor position' })
+vim.keymap.set('n', '<leader>yf', utils.yank_full_file, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yr', utils.yank_rel_file, { desc = 'Copy relative path to the current nvim dir of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yl', utils.yank_file_with_location, { desc = 'Copy full path of current buffer to clipboard' })
+vim.keymap.set('n', '<leader>yg', utils.yank_all_in_buffer, { desc = 'Yank whole file and restore cursor position' })
+vim.keymap.set('n', '<leader>ya', utils.yank_all_in_buffer, { desc = 'Yank whole file and restore cursor position' })
 -- THIS IS FOR DEBUGGING
 -- vim.keymap.set('n', '<Leader>5', function() require('dap').continue() end)
 -- vim.keymap.set('n', '<Leader>6', function() require('dap').terminate() end)
