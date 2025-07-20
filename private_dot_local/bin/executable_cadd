@@ -38,7 +38,7 @@ RESET=$(tput sgr0)
 # Find and remove all directories named 'scratch'
 fd scratch --type d --exact-depth 1 | while IFS= read -r dir; do
   echo "${YELLOW}⚠️  Removed: $(realpath "$dir")${RESET}"
-  rm -rf "$dir"
+  git rm -rf "$dir"
 done
 
 
