@@ -1,0 +1,7 @@
+
+## Keymaps
+- Space-5 : start/continue debugging session
+- Space-6 : terminate the debugging session
+- Space-7 : step over
+- Space-8 : step in
+- Space-9 : step out
