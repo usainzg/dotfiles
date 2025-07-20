@@ -28,8 +28,6 @@ chezmoi add ~/.ccache/ccache.conf
 
 
 # INFO: COMMIT ALL ADDs, except for scratch/
-# Find and remove all directories named 'scratch'
-fd scratch --print0 | xargs rm -rf
 
 git add .
 
