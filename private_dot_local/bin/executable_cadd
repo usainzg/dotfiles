@@ -36,7 +36,7 @@ YELLOW=$(tput setaf 3)
 RESET=$(tput sgr0)
 
 # Find and remove all directories named 'scratch'
-fd scratch --type d --exact-depth 1 | while IFS= read -r dir; do
+fd scratch --type -print0 | while IFS= read -r dir; do
   echo "${YELLOW}⚠️  Removed: $(realpath "$dir")${RESET}"
   git rm -rf "$dir"
 done
