@@ -63,7 +63,7 @@ end
 return {
     cmd = {
         '/Users/jjasmine/Developer/igalia/LLVM-20.1.7-macOS-ARM64/bin/clangd',
-        '--j=3', '--background-index', '--pch-storage=memory' },
+        '--j=3', '--background-index', '--pch-storage=memory', '-xcuda' },
     filetypes = { '.', 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     root_markers = {
         '.clangd',
