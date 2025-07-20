@@ -29,10 +29,11 @@ chezmoi add ~/.ccache/ccache.conf
 
 # INFO: COMMIT ALL ADDs, except for scratch/
 
+fd scratch --print0 | xargs git rm -rf
+
 git add .
 
 # Find and remove all directories named 'scratch'
-fd scratch --print0 | xargs git rm -rf
 
 git status -v 
 git commit -m "$(echo 'Automatic update via ~/.local/bin/cadd'; echo; git diff --cached --summary --name-status | sd '^A\t' '[Added]    - ' | sd '^M\t' '[Modified] - ' | sd '^D\t' '[Deleted]  - ')"
