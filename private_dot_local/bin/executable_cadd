@@ -22,14 +22,20 @@ chezmoi add ~/.config/kitty/current-theme.conf ~/.config/kitty/dark-theme.auto.c
 
 # INFO: Executable
 chezmoi add ~/.local/bin/cadd ~/.local/bin/sesh  ~/.local/bin/cinstall ~/.local/bin/cpush ~/.local/bin/gitspeedup ~/.local/bin/cap ~/.local/bin/yabai_reload
+chezmoi add ~/.local/bin/gh_report
 
 # INFO: ccache
 chezmoi add ~/.ccache/ccache.conf
 
 
-# INFO: COMMIT ALL ADDs
+# INFO: COMMIT ALL ADDs, except for scratch/
 
 git add .
+
+# Find and remove all directories named 'scratch' precommitted
+fd scratch --print0 | xargs git rm -rf
+
+
 git status -v 
 git commit -m "$(echo 'Automatic update via ~/.local/bin/cadd'; echo; git diff --cached --summary --name-status | sd '^A\t' '[Added]    - ' | sd '^M\t' '[Modified] - ' | sd '^D\t' '[Deleted]  - ')"
 

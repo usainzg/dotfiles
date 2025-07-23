@@ -54,6 +54,7 @@ return {
         show_documentation = false
       }
     },
-    -- opts_extend = { "sources.default" }
-  }
+  },
+
+    opts_extend = { "sources.default" }
 }

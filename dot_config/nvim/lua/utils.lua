@@ -32,4 +32,35 @@ function string:contains(sub)
     return self:find(sub, 1, true) ~= nil
 end
 
+M.yank_all_in_buffer = function ()
+    local cur = vim.api.nvim_win_get_cursor(0) -- Save current cursor position
+    vim.cmd('normal! ggVGy') -- Yank the whole file
+    vim.api.nvim_win_set_cursor(0, cur) -- Restore cursor position
+
+    print('Yanked whole file to system clipboard')
+end
+
+
+
+M.yank_rel_file = function()
+    local path = vim.fn.expand('%:.')
+    vim.fn.setreg('+', path)
+    print('Copied: ' .. path)
+end
+
+M.yank_full_file = function()
+    local path = vim.fn.expand('%:p')
+    vim.fn.setreg('+', path)
+    print('Copied: ' .. path)
+end
+
+
+M.yank_file_with_location = function()
+    local path = vim.fn.expand('%:p')
+    local line = vim.fn.line('.')
+    local result = path .. ':' .. line
+    vim.fn.setreg('+', result)
+    print('Copied: ' .. result)
+end
+
 return M
