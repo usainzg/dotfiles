@@ -106,16 +106,24 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# personal aliases
+alias brup="brew update -y && brew upgrade -y"
+alias fup="sudo dnf update -y && sudo dnf upgrade -y && brup"
+alias lzg="lazygit"
+alias n="nvim"
+
 if [ -d ".venv/" ]; then
   source .venv/bin/activate
 fi
 
 . "$HOME/.atuin/bin/env"
 
+# atuin
 eval "$(atuin init zsh)"
 
 # export WASMTIME_HOME="$HOME/.wasmtime"
 
 # export PATH="$WASMTIME_HOME/bin:$PATH"
 
+# linux homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
