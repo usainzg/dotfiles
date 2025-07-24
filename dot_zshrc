@@ -108,7 +108,6 @@ fi
 
 # personal aliases
 alias brup="brew update -y && brew upgrade -y"
-alias fup="sudo dnf update -y && sudo dnf upgrade -y && brup"
 alias lzg="lazygit"
 alias n="nvim"
 
