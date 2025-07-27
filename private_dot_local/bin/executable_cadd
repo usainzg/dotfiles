@@ -1,7 +1,7 @@
 #
 pushd . > /dev/null
 cd ~/.local/share/chezmoi/
-git rm -rf dot_config/nvim
+git rm -rf dot_config/nvim --quiet
 # INFO: cadd STANDS FOR CHEZMOI ADDING ALL RELATED FILE
 #
 # Add zsh gitconfig
@@ -33,7 +33,7 @@ chezmoi add ~/.ccache/ccache.conf
 git add .
 
 # Find and remove all directories named 'scratch' precommitted
-fd scratch --print0 | xargs git rm -rf
+fd scratch --print0 | xargs git rm -rf --quiet
 
 
 git status -v 
