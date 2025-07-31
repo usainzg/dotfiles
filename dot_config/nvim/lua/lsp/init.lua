@@ -10,7 +10,7 @@ end
 vim.lsp.enable("clangd")
 vim.lsp.enable('ocamllsp')
 
-vim.lsp.set_log_level(5)
+vim.lsp.set_log_level(4)
 
 vim.lsp.enable('rust_analyzer')
 

@@ -15,6 +15,7 @@ else
             echo ~/.local/bin/cpush
             echo ~/.local/bin/sesh
             echo ~/.local/bin/yabai_reload
+            echo ~/.local/bin/run_wasm_test_suite.py
             echo ~/.config/kitty/kitty.conf
             echo ~/.tmux.conf
             echo ~/.gitconfig
