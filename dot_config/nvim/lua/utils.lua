@@ -40,18 +40,19 @@ M.yank_all_in_buffer = function ()
     print('Yanked whole file to system clipboard')
 end
 
+M.yank_msg = 'Produced for register: '
 
 
 M.yank_rel_file = function()
     local path = vim.fn.expand('%:.')
     vim.fn.setreg('+', path)
-    print('Copied: ' .. path)
+    print(M.yank_msg .. path)
 end
 
 M.yank_full_file = function()
     local path = vim.fn.expand('%:p')
     vim.fn.setreg('+', path)
-    print('Copied: ' .. path)
+    print(M.yank_msg .. path)
 end
 
 
@@ -60,7 +61,7 @@ M.yank_file_with_location = function()
     local line = vim.fn.line('.')
     local result = path .. ':' .. line
     vim.fn.setreg('+', result)
-    print('Copied: ' .. result)
+    print(M.yank_msg .. result)
 end
 
 M.yank_for_conditional_break = function()
@@ -69,7 +70,7 @@ M.yank_for_conditional_break = function()
     local word = vim.fn.expand("<cword>")
     local result = 'breakpoint set --file '.. path .. ' --line ' .. line .. ' --condition ' .. '\'' .. word
     vim.fn.setreg('+', result)
-    print('Copied: ' .. result)
+    print(M.yank_msg .. result)
 end
 
 return M
