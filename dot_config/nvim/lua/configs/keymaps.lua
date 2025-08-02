@@ -116,6 +116,7 @@ vim.keymap.set("x", "<leader>ys", function()
     end)
 end, { desc = "Yank current selection to the scratch/ folder" })
 
+vim.keymap.set('n', '<leader>yc', utils.yank_for_conditional_break, { desc = 'Set up conditional breakpoint for a variable' })
 vim.keymap.set('n', '<leader>yf', utils.yank_full_file, { desc = 'Copy full path of current buffer to clipboard' })
 vim.keymap.set('n', '<leader>yr', utils.yank_rel_file, { desc = 'Copy relative path to the current nvim dir of current buffer to clipboard' })
 vim.keymap.set('n', '<leader>yl', utils.yank_file_with_location, { desc = 'Copy full path of current buffer to clipboard' })

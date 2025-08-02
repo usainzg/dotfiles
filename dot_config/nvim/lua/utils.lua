@@ -63,4 +63,13 @@ M.yank_file_with_location = function()
     print('Copied: ' .. result)
 end
 
+M.yank_for_conditional_break = function()
+    local path = vim.fn.expand('%:.')
+    local line = vim.fn.line('.')
+    local word = vim.fn.expand("<cword>")
+    local result = 'breakpoint set --file '.. path .. ' --line ' .. line .. ' --condition ' .. '\'' .. word
+    vim.fn.setreg('+', result)
+    print('Copied: ' .. result)
+end
+
 return M
