@@ -18,6 +18,7 @@ else
             echo ~/.local/bin/run_wasm_test_suite.py
             echo ~/.config/kitty/kitty.conf
             echo ~/.tmux.conf
+            echo ~/.lldbinit
             echo ~/.gitconfig
             echo ~/.gitconfig-work
             echo ~/.config/skhd/skhdrc

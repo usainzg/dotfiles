@@ -26,7 +26,7 @@ chezmoi add ~/.local/bin/run_wasm_test_suite.py
 chezmoi add ~/.local/bin/gh_report
 
 # INFO: ccache
-chezmoi add ~/.ccache/ccache.conf
+chezmoi add ~/.ccache/ccache.conf ~/.lldbinit
 
 
 # INFO: COMMIT ALL ADDs, except for scratch/
