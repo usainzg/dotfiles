@@ -30,6 +30,7 @@
 
     cm = commit -m
     aoe = "!git commit --amend --no-edit"
+    dh = diff HEAD~1 HEAD
     fix = "!git commit-with-prefix FIX"
     feat = "!git commit-with-prefix FEAT"
     docs = "!git commit-with-prefix DOCS"
