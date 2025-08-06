@@ -1,28 +1,26 @@
 vim.opt.hlsearch = true
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 
-vim.opt.clipboard = "unnamedplus"
-
+vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.relativenumber = true
-vim.opt.number         = true
+vim.opt.number = true
 
-vim.opt.scrolloff      = 10
-vim.opt.tabstop        = 8
-vim.opt.softtabstop    = 4
-vim.opt.shiftwidth     = 2
+vim.opt.scrolloff = 10
+vim.opt.tabstop = 8
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 2
 -- vim.opt.expandtab      = true
-vim.opt.incsearch      = true
+vim.opt.incsearch = true
 
+vim.opt.spell = false
 
-vim.opt.spell          = false
+vim.opt.termguicolors = true
+vim.opt.syntax = 'on'
 
-vim.opt.termguicolors  = true
-vim.opt.syntax         = "on"
-
-vim.diagnostic.config({
-    virtual_text = true,
-})
+vim.diagnostic.config {
+  virtual_text = true,
+}
 
 -- Enable autoread
 vim.o.autoread = true
@@ -31,13 +29,13 @@ vim.o.autoread = true
 --
 --
 --vim
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-    pattern = "*",
-    callback = function()
-        if vim.fn.mode() ~= "c" then
-            vim.cmd("checktime")
-        end
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  pattern = '*',
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd 'checktime'
     end
+  end,
 })
 -- Notification after file change
 -- vim.api.nvim_create_autocmd("FileChangedShellPost", {
@@ -63,27 +61,29 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHo
 -- })
 
 --- Open file at the last position it was edited earlier
-vim.api.nvim_create_autocmd("BufReadPost", {
-    callback = function()
-        local mark = vim.api.nvim_buf_get_mark(0, '"')
-        if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
-            vim.api.nvim_win_set_cursor(0, mark)
-        end
-    end,
+vim.api.nvim_create_autocmd('BufReadPost', {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+      vim.api.nvim_win_set_cursor(0, mark)
+    end
+  end,
 })
 
 -- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
-    pattern  = '*',
-    callback = function() vim.hl.on_yank { timeout = 300 } end
+  pattern = '*',
+  callback = function()
+    vim.hl.on_yank { timeout = 300 }
+  end,
 })
 
 -- Remove hl search when enter Insert
-vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
-    desc = "Remove hl search when enter Insert",
-    callback = vim.schedule_wrap(function()
-        vim.cmd.nohlsearch()
-    end),
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
+  desc = 'Remove hl search when enter Insert',
+  callback = vim.schedule_wrap(function()
+    vim.cmd.nohlsearch()
+  end),
 })
 
 -- Show cursor line only in active window
@@ -94,6 +94,5 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
   group = cursorGrp,
 })
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, { pattern = '*', command = 'set nocursorline', group = cursorGrp })
-
 
 --

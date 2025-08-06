@@ -1,16 +1,16 @@
 local M = {
   {
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    build = ":TSUpdate",
-branch = 'master',lazy = false,
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    build = ':TSUpdate',
+    branch = 'master',
+    lazy = false,
     config = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
+      require('nvim-treesitter.install').update { with_sync = true }
 
-
-      require 'nvim-treesitter.configs'.setup {
+      require('nvim-treesitter.configs').setup {
         -- A list of parser names, or "all" (the five listed parsers should always be installed)
-        ensure_installed = { "all" },
+        ensure_installed = { 'all' },
         sync_install = false,
         auto_install = true,
         highlight = { enable = true },
@@ -26,14 +26,14 @@ branch = 'master',lazy = false,
 
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
+              ['af'] = '@function.outer',
+              ['if'] = '@function.inner',
+              ['ac'] = '@class.outer',
               -- You can optionally set descriptions to the mappings (used in the desc parameter of
               -- nvim_buf_set_keymap) which plugins like which-key display
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+              ['ic'] = { query = '@class.inner', desc = 'Select inner part of a class region' },
               -- You can also use captures from other query groups like `locals.scm`
-              ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+              ['as'] = { query = '@local.scope', query_group = 'locals', desc = 'Select language scope' },
             },
             -- You can choose the select mode (default is charwise 'v')
             --
@@ -43,9 +43,9 @@ branch = 'master',lazy = false,
             -- and should return the mode ('v', 'V', or '<c-v>') or a table
             -- mapping query_strings to modes.
             selection_modes = {
-              ['@parameter.outer'] = 'v',               -- charwise
-              ['@function.outer'] = 'V',                -- linewise
-              ['@class.outer'] = '<c-v>',               -- blockwise
+              ['@parameter.outer'] = 'v', -- charwise
+              ['@function.outer'] = 'V', -- linewise
+              ['@class.outer'] = '<c-v>', -- blockwise
             },
             -- If you set this to `true` (default is `false`) then any textobject is
             -- extended to include preceding or succeeding whitespace. Succeeding
@@ -61,21 +61,19 @@ branch = 'master',lazy = false,
         },
       }
     end,
-
   },
 
   {
-    "nvim-treesitter/nvim-treesitter-context",
-  config = function ()
-      require 'treesitter-context'.setup()
-      vim.keymap.set("n", "[c", function()
-        require("treesitter-context").go_to_context(vim.v.count1)
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require('treesitter-context').setup()
+      vim.keymap.set('n', '[c', function()
+        require('treesitter-context').go_to_context(vim.v.count1)
       end, { silent = true })
 
-      require("treesitter-context").enable()
-    end
+      require('treesitter-context').enable()
+    end,
   },
-  }
-
+}
 
 return { M }
