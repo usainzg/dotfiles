@@ -2,7 +2,8 @@ local util = require 'lspconfig.util'
 
 local function get_command()
     local cmd = {
-        '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/tblgen-lsp-server',
+        -- '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/tblgen-lsp-server',
+        '/home/usainzg/Projects/topoly-distmem/externals/llvm-project/build/bin/tblgen-lsp-server',
     }
     local files = vim.fs.find('tablegen_compile_commands.yml', { path = vim.fn.expand('%:p:h'), upward = true })
     if #files > 0 then
