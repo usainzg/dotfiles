@@ -9,6 +9,7 @@ else
             find ~/.config/nvim -maxdepth 0 -type d
             echo ~/.local/share/chezmoi/
             echo ~/.zshrc
+            echo ~/.ccache/ccache.conf
             echo ~/.local/bin/cadd
             echo ~/.local/bin/cinstall
             echo ~/.local/bin/cap
