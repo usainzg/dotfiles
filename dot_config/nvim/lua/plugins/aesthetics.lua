@@ -98,6 +98,7 @@ return {
   --         vim.cmd.colorscheme "catppuccin-latte"
   --     end
   -- },
+  --
   {
     'Shatur/neovim-ayu',
     priority = 1000,
