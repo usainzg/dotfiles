@@ -23,9 +23,10 @@ keymap('v', '<Tab>', '>gv^', { noremap = true, silent = true, desc = 'Persistent
 keymap('n', '<S-l>', ':tabnext<CR>', { noremap = true, silent = true, desc = 'Go to tab on the right' })
 keymap('n', '<S-h>', ':tabprevious<CR>', { noremap = true, silent = true, desc = 'Go to tab on the left' })
 
-keymap('n', '<leader>s', ':w<CR>', opts)
-keymap('n', 'zz', ':qa!<CR>', opts)
-keymap('n', '<leader>n', ':Navbuddy<CR>', opts)
+keymap("n", "<leader>s", ":w<CR>", opts)
+keymap("n", "<leader>S", ":w<CR>", opts)
+keymap("n", "zz", ":qa!<CR>", opts)
+keymap("n", "<leader>n", ":Navbuddy<CR>", opts)
 
 vim.keymap.set('x', '<leader>lr', function()
   local selected = utils.extract_vis_text()

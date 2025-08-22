@@ -1,9 +1,9 @@
-for _, name in ipairs { 'lua_ls', 'pyright', 'clangd', 'tblgen-lsp-server', 'pylsp' } do
-  local ok, config = pcall(require, 'lsp.' .. name)
-  if ok then
-    vim.lsp.config(name, config)
-    vim.lsp.enable(name)
-  end
+for _, name in ipairs({ "lua_ls", "pyright", "clangd", "tblgen_lsp_server" , "mlir_lsp_server", "pylsp" }) do
+    local ok, config = pcall(require, "lsp." .. name)
+    if ok then
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
+    end
 end
 
 vim.lsp.enable 'clangd'
