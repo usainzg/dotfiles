@@ -1,7 +1,7 @@
 local language_servers = {
   "lua_ls", "pyright", "pylsp",
   "clangd", "tblgen_lsp_server" , "mlir_lsp_server",
-  "cir_lsp_server" 
+  -- "cir_lsp_server" 
 }
 
 for _, name in ipairs(language_servers) do
