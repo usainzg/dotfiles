@@ -74,5 +74,6 @@ M.yank_for_conditional_break = function()
 end
 
 M.llvm_repo = "/Users/jjasmine/Developer/igalia/llvm-project/"
+M.clangir_repo = "/Users/jjasmine/Developer/igalia/clangir/"
 
 return M
