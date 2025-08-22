@@ -23,7 +23,8 @@ return {
     config = function()
       require('lualine').setup {
         options = {
-          theme = 'ayu',
+          -- theme = 'ayu',
+          theme = 'everforest',
         },
         sections = {
           lualine_a = {
@@ -98,21 +99,34 @@ return {
   --         vim.cmd.colorscheme "catppuccin-latte"
   --     end
   -- },
-  --
   {
-    'Shatur/neovim-ayu',
-    priority = 1000,
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    -- Optional; default configuration will be used if setup isn't called.
     config = function()
-      require('ayu').setup {
-        mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-        terminal = true, -- Set to `false` to let terminal manage its own colors.
-        overrides = {
-          TabLineSel = { fg = '#2E82FF', bg = 'None' },
-        },
-      }
-      require('ayu').colorscheme()
+      require("everforest").setup({
+        -- Your config here
+      })
+      -- vim.cmd.colorscheme "everforest"
+      vim.cmd([[colorscheme everforest]])
     end,
   },
+  -- {
+  --   'Shatur/neovim-ayu',
+  --   priority = 1000,
+  --   config = function()
+  --     require('ayu').setup {
+  --       mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+  --       terminal = true, -- Set to `false` to let terminal manage its own colors.
+  --       overrides = {
+  --         TabLineSel = { fg = '#2E82FF', bg = 'None' },
+  --       },
+  --     }
+  --     require('ayu').colorscheme()
+  --   end,
+  -- },
 
   {
     'folke/todo-comments.nvim',

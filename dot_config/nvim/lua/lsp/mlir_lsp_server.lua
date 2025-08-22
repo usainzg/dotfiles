@@ -8,7 +8,8 @@
 
 ---@type vim.lsp.Config
 return {
-  cmd = { '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/mlir-lsp-server' },
+  -- cmd = { '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/mlir-lsp-server' },
+  cmd = { '/home/usainzg/Projects/topoly-distmem/externals/llvm-project/build/bin/mlir-lsp-server' },
   filetypes = { 'mlir' },
   root_markers = { '.git' },
 }
