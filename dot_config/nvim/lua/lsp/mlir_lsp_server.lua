@@ -1,3 +1,4 @@
+local utils = require 'utils'
 ---@brief
 ---
 --- https://mlir.llvm.org/docs/Tools/MLIRLSP/#mlir-lsp-language-server--mlir-lsp-server=
@@ -8,7 +9,7 @@
 
 ---@type vim.lsp.Config
 return {
-  cmd = { '/Users/jjasmine/Developer/igalia/llvm-project/build/bin/mlir-lsp-server' },
+  cmd = { utils.llvm_repo .. '/build/bin/mlir-lsp-server' },
   filetypes = { 'mlir' },
   root_markers = { '.git' },
 }

@@ -73,4 +73,6 @@ M.yank_for_conditional_break = function()
     print(M.yank_msg .. result)
 end
 
+M.llvm_repo = "/Users/jjasmine/Developer/igalia/llvm-project/"
+
 return M
