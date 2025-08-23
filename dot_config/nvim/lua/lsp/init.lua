@@ -17,7 +17,7 @@ vim.lsp.enable('ocamllsp')
 
 vim.lsp.set_log_level(4)
 
-vim.lsp.enable 'rust_analyzer'
+vim.lsp.enable("rust_analyzer")
 
 --- AUTO COMMANDS
 vim.api.nvim_create_autocmd('BufWritePre', {

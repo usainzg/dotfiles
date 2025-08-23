@@ -73,6 +73,6 @@ end
 -- M.llvm_repo = "/Users/jjasmine/Developer/igalia/llvm-project/"
 -- M.clangir_repo = "/Users/jjasmine/Developer/igalia/clangir/"
 
-M.llvm_repo = "/home/usainzg/Projects/topoly-distmem/externals/llvm-project/"
-M.clangir_repo = "/Users/jjasmine/Developer/igalia/clangir/"
+M.llvm_repo = "/home/usainzg/Projects/topoly-distmem/externals/llvm-project"
+M.clangir_repo = "/Users/jjasmine/Developer/igalia/clangir"
 return M
