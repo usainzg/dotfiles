@@ -4,18 +4,17 @@ local language_servers = {
   "cir_lsp_server" 
 }
 
+vim.lsp.set_log_level(4)
+
 for _, name in ipairs(language_servers) do
     local ok, config = pcall(require, "lsp." .. name)
     if ok then
-        vim.lsp.config(name, config)
+        vim.lsp.config[name]=config
         vim.lsp.enable(name)
     end
 end
 
 vim.lsp.enable("clangd")
-vim.lsp.enable('ocamllsp')
-
-vim.lsp.set_log_level(4)
 
 vim.lsp.enable('rust_analyzer')
 
@@ -39,11 +38,14 @@ vim.keymap.set("n", "<leader>c", function()
 end, { desc = "Open matching source file in current buffer" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, desc = "Go to implementation" })
-vim.keymap.set("n", "<leader>lD", vim.diagnostic.goto_prev,
-    { noremap = true, silent = true, desc = "Go to previous diagnostics error" })
 
-vim.keymap.set("n", "<leader>ld", vim.diagnostic.goto_next,
-    { noremap = true, silent = true, desc = "Go to next diagnostics error" })
+vim.keymap.set("n", "M", function()
+  vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR  }) -- backwards
+end, { silent = true, desc = "Go to previous diagnostic" })
+
+vim.keymap.set("n", "m", function()
+  vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR  }) -- forwards
+end, { silent = true, desc = "Go to next diagnostic" })
 
 
 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
