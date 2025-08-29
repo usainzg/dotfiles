@@ -1,7 +1,8 @@
 local language_servers = {
   "lua_ls", "pyright", "pylsp",
   "clangd", "tblgen_lsp_server" , "mlir_lsp_server",
-  "cir_lsp_server" 
+  "cir_lsp_server" ,
+  "fortls"
 }
 
 vim.lsp.set_log_level(4)
@@ -10,6 +11,8 @@ for _, name in ipairs(language_servers) do
     local ok, config = pcall(require, "lsp." .. name)
     if ok then
         vim.lsp.config[name]=config
+        vim.lsp.enable(name)
+    else
         vim.lsp.enable(name)
     end
 end

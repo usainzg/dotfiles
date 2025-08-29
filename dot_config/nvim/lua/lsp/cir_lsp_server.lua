@@ -9,6 +9,6 @@ local utils = require 'utils'
 ---@type vim.lsp.Config
 return {
   cmd = { utils.clangir_repo .. '/build/bin/cir-lsp-server' },
-  -- filetypes = { 'cir' },
+  filetypes = { 'cir' },
   root_markers = { '.git' },
 }
