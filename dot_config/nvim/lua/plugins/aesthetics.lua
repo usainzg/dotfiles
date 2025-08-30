@@ -25,6 +25,7 @@ return {
         options = {
           -- theme = 'ayu',
           theme = 'everforest',
+          disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         },
         sections = {
           lualine_a = {
